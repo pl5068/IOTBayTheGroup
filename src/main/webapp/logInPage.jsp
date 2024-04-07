@@ -1,5 +1,4 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-
 <!DOCTYPE html>
 <html>
     <head>
@@ -11,7 +10,7 @@
         <div class="auth-page">
             <div class="auth-content">
                 <h2>Log in to IotBay</h2>
-                <form action="" method="post" class="auth-box">
+                <form action="user_login" method="post" class="auth-box">
                     <label class="auth-input">
                         <div class="text-field-label">Email</div>
                         <input name="email" type="email" class="text-field large" placeholder="Enter your email address" required />
@@ -23,29 +22,6 @@
                     <button type="submit" style="width: 100%" class="button primary large">Log in</button>
                 </form>
                 <a href="registerPage.jsp">Don't have an account? Register</a>
-                <form method='POST' action="user_login">
-                    <table>
-                        <tr>
-                            <td>
-                                <label>Email </label>
-                            </td>
-                            <td>
-                                <input name="email" type="text" id="email">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <label>Password </label>
-                            </td>
-                            <td>
-                                <input name="password" type="password" id="password">
-                            </td>
-                        </tr>
-                    </table>
-                    <button type="submit">
-                        Submit
-                    </button>
-                </form>
             </div>
         </div>
     </body>

@@ -16,6 +16,7 @@ import jakarta.servlet.ServletResponse;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 public class user_login extends HttpServlet {
 
@@ -33,13 +34,16 @@ public class user_login extends HttpServlet {
             String password = request.getParameter("password");
             
             User user = db.findUser(email, password);
+            HttpSession session = request.getSession();
 
             if (user != null) {
                 System.out.print("Login Found");
-                response.sendRedirect("http://www.javatpoint.com");
+                
+                session.setAttribute("user", user);
+                response.sendRedirect("welcomePage.jsp");
                 return;
             }
-            response.sendRedirect("./");
+            request.getRequestDispatcher("logInPage.jsp").forward(request,response);
         } catch (ClassNotFoundException | SQLException ex) {
 
             Logger.getLogger(TestDB.class.getName()).log(Level.SEVERE, null, ex);

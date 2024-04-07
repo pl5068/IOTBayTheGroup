@@ -3,13 +3,13 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Register — IoTBay</title>
+        <title>IOTBay | Register</title>
         <link href='styles/common.css' rel="stylesheet" type="text/css">
     </head>
     <body style="background: var(--accent-2);">
         <div class="auth-page">
             <div class="auth-content">
-                <h2>Register for IotBay</h2>
+                <h2>Register for IOTBay</h2>
                 <form action="" method="post" class="auth-box">
                     <label class="auth-input">
                         <div class="text-field-label">Email</div>
@@ -18,6 +18,14 @@
                     <label class="auth-input">
                         <div class="text-field-label">Password</div>
                         <input name="password" type="password" class="text-field large" placeholder="Enter your password" required />
+                    </label>
+                    <label class="auth-input">
+                        <div class="text-field-label">First Name</div>
+                        <input name="firstName" type="text" class="text-field large" placeholder="Enter your first name" required />
+                    </label>
+                    <label class="auth-input">
+                        <div class="text-field-label">Password</div>
+                        <input name="password" type="date" class="text-field large" placeholder="Enter DOB" required />
                     </label>
                     <button type="submit" style="width: 100%" class="button primary large">Register</button>
                 </form>

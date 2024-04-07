@@ -17,11 +17,11 @@ public class DBManager {
         ResultSet rs = st.executeQuery(fetch);
         
         while (rs.next()) {
-            String userEmail = rs.getString(1);
-            String userPassword = rs.getString(3);
-            if (userEmail.contains(email) && userPassword.contains(password)) {
-                String userFirstName = rs.getString(2);
-                String userDOB = rs.getString(4);
+            String userEmail = rs.getString(1).replaceAll("\\s", "");
+            String userPassword = rs.getString(3).replaceAll("\\s", "");
+            if (userEmail.equals(email) && userPassword.equals(password)) {
+                String userFirstName = rs.getString(2).replaceAll("\\s", "");
+                String userDOB = rs.getString(4).replaceAll("\\s", "");
                 return new User(userEmail, userFirstName, userPassword, userDOB);
             }
         }

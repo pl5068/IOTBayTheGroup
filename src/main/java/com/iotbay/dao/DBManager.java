@@ -19,7 +19,7 @@ public class DBManager {
         while (rs.next()) {
             String userEmail = rs.getString(1);
             String userPassword = rs.getString(3);
-            if (userEmail.equals(email) && userPassword.equals(password)) {
+            if (userEmail.contains(email) && userPassword.contains(password)) {
                 String userFirstName = rs.getString(2);
                 String userDOB = rs.getString(4);
                 return new User(userEmail, userFirstName, userPassword, userDOB);
@@ -31,7 +31,7 @@ public class DBManager {
 
 //Add a user-data into the database   
     public void addUser(String email, String firstName, String password, String dob) throws SQLException { 
-        st.executeUpdate("INSERT INTO ISDUSER.users VALUES ('" + email + "', '" + firstName + "', '" + password + "', '" + dob + "');");
+        st.executeUpdate("INSERT INTO ISDUSER.users VALUES ('" + email + "', '" + firstName + "', '" + password + "', '" + dob + "')");
     }
 
 //update a user details in the database   

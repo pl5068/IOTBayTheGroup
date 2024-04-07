@@ -14,34 +14,39 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
-public class user_login extends HttpServlet {
+public class user_register extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
+            System.out.print("blerg");
             DBConnector connector = new DBConnector();
 
             Connection conn = connector.openConnection();
 
             DBManager db = new DBManager(conn);
+            
+            System.out.print("blerg");
 
             String email = request.getParameter("email");
             String password = request.getParameter("password");
-            
-            User user = db.findUser(email, password);
-            HttpSession session = request.getSession();
+            String firstName = request.getParameter("firstName");
+            String dob = request.getParameter("dob");
 
-            if (user != null) {
-                System.out.print("Login Found");
-                
+            System.out.print(email + password + firstName + dob);
+            HttpSession session = request.getSession();
+            if (email != null && password != null && firstName != null && dob != null) {
+
+                db.addUser(email, firstName, password, dob);
+                User user = new User(email, firstName, password, dob);
+                System.out.print(user.getEmail());
                 session.setAttribute("user", user);
                 response.sendRedirect("welcomePage.jsp");
                 conn.close();
                 return;
             }
-            request.getRequestDispatcher("logInPage.jsp").forward(request,response);
-            
+            request.getRequestDispatcher("registerPage.jsp").forward(request, response);
             conn.close();
         } catch (ClassNotFoundException | SQLException ex) {
 
@@ -49,6 +54,5 @@ public class user_login extends HttpServlet {
 
         }
     }
-
 
 }

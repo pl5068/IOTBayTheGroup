@@ -10,7 +10,7 @@
         <div class="auth-page">
             <div class="auth-content">
                 <h2>Register for IOTBay</h2>
-                <form action="" method="post" class="auth-box">
+                <form action="user_register" method="POST" class="auth-box">
                     <label class="auth-input">
                         <div class="text-field-label">Email</div>
                         <input name="email" type="email" class="text-field large" placeholder="Enter your email address" required />
@@ -25,9 +25,16 @@
                     </label>
                     <label class="auth-input">
                         <div class="text-field-label">Password</div>
-                        <input name="password" type="date" class="text-field large" placeholder="Enter DOB" required />
+                        <input name="dob" type="date" class="text-field large" placeholder="Enter DOB" required />
                     </label>
                     <button type="submit" style="width: 100%" class="button primary large">Register</button>
+                    <input type="hidden" value="yes" name="submitted">       
+                    <%
+                        String regFailed = request.getParameter("submitted");
+                        if (regFailed != null && regFailed.equals("yes")) {
+                    %>
+                    <p id="error">Please fill all fields before submitting</p>
+                    <% }%>
                 </form>
                 <a href="logInPage.jsp">Already have an account? Log in</a>
             </div>

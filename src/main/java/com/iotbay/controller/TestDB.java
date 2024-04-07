@@ -2,7 +2,6 @@ package com.iotbay.controller;
 
 import com.iotbay.dao.DBConnector;
 import com.iotbay.dao.DBManager;
-import com.iotbay.iotbaydemo.User;
 import java.sql.*;
 
 import java.util.*;
@@ -22,10 +21,23 @@ public class TestDB {
 
             DBManager db = new DBManager(conn);
 
-            
+            System.out.print("User email: ");
 
-            User u = db.findUser("paolo.lamesa@student.uts.edu.au", "password123");
-            System.out.println(u.getEmail());
+            String email = in.nextLine();
+
+            System.out.print("User name: ");
+
+            String firstName = in.nextLine();
+
+            System.out.print("User password: ");
+
+            String password = in.nextLine();
+
+            System.out.print("User DOB: ");
+
+            String dob = in.nextLine();
+
+            db.addUser(email, firstName, password, dob);
 
             System.out.println("User is added to the database.");
 

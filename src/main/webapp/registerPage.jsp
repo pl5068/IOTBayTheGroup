@@ -3,13 +3,25 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-            <link href='styles/common.css' rel="stylesheet" type="text/css">
+        <title>Register — IoTBay</title>
+        <link href='styles/common.css' rel="stylesheet" type="text/css">
     </head>
-    <body>
-        <div id='page'>
-            <div id='body'>
-                <h1>Register</h1>
+    <body style="background: var(--accent-2);">
+        <div class="auth-page">
+            <div class="auth-content">
+                <h2>Register for IotBay</h2>
+                <form action="" method="post" class="auth-box">
+                    <label class="auth-input">
+                        <div class="text-field-label">Email</div>
+                        <input name="email" type="email" class="text-field large" placeholder="Enter your email address" required />
+                    </label>
+                    <label class="auth-input">
+                        <div class="text-field-label">Password</div>
+                        <input name="password" type="password" class="text-field large" placeholder="Enter your password" required />
+                    </label>
+                    <button type="submit" style="width: 100%" class="button primary large">Register</button>
+                </form>
+                <a href="logInPage.jsp">Already have an account? Log in</a>
             </div>
         </div>
     </body>

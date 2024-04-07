@@ -1,8 +1,62 @@
-body, html {height:100%}
+:root {
+    --radius: 5px;
+  
+    --background: #fff;
+    
+    --accent-1: hsl(206, 30.0%, 98.8%);
+    --accent-2: hsl(210, 16.7%, 97.6%);
+    --accent-3: hsl(209, 13.3%, 95.3%);
+    --accent-4: hsl(209, 12.2%, 93.2%);
+    --accent-5: hsl(208, 11.7%, 91.1%);
+    --accent-6: hsl(208, 11.3%, 88.9%);
+    --accent-7: hsl(207, 11.1%, 85.9%);
+    --accent-8: hsl(205, 10.7%, 78.0%);
+    --accent-9: hsl(206, 6.0%, 56.1%);
+    --accent-10: hsl(206, 5.8%, 52.3%);
+    --accent-11: hsl(206, 6.0%, 43.5%);
+    --accent-12: hsl(206, 24.0%, 9.0%);
+    
+    --primary-1: hsl(206, 100%, 99.2%);
+    --primary-2: hsl(210, 100%, 98.0%);
+    --primary-3: hsl(209, 100%, 96.5%);
+    --primary-4: hsl(210, 98.8%, 94.0%);
+    --primary-5: hsl(209, 95.0%, 90.1%);
+    --primary-6: hsl(209, 81.2%, 84.5%);
+    --primary-7: hsl(208, 77.5%, 76.9%);
+    --primary-8: hsl(206, 81.9%, 65.3%);
+    --primary-9: hsl(206, 100%, 50.0%);
+    --primary-10: hsl(208, 100%, 47.3%);
+    --primary-11: hsl(211, 100%, 43.2%);
+    --primary-12: hsl(211, 100%, 15.0%);
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+* {
+    margin: 0;
+}
+
+p, h1, h2, h3, h4, h5, h6 {
+    overflow-wrap: break-word;
+}
+
+a {
+    color: var(--primary-11);
+    text-decoration-color: var(--primary-6);
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
 body {
+    line-height: 1.5;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, sans-serif;
     display: flex;
     flex-direction: column;
-    background-color: lightblue;
+    background-color: var(--background);
 }
 
 #body {
@@ -17,11 +71,117 @@ body {
     flex-grow: 1;
 }
 
-h1 {
-  font-family: Helvetica, sans-serif;
-  text-align: center;
-}
-p {
-    font-family: Helvetica, sans-serif;
+.reset, .text-field, .button {
+    all: unset;
+    box-sizing: border-box;
 }
 
+.text-field {
+    --text-field-height: 36px;
+    --text-field-indent: 8px;
+    --text-field-font-size: 14px;
+    background: var(--background);
+    cursor: text;
+    height: var(--text-field-height);
+    font-size: var(--text-field-font-size);
+    width: 100%;
+    border-radius: var(--radius);
+    box-shadow: inset 0 0 0 1px rgba(0,0,0,.2);
+    text-indent: var(--text-field-indent);
+    text-align: start;
+}
+
+.text-field:focus {
+  box-shadow: inset 0 0 0 2px var(--primary-8);
+}
+
+.text-field::placeholder {
+    color: var(--accent-11);
+    opacity: .66;
+}
+
+.text-field.large {
+    --text-field-height: 36px;
+    --text-field-indent: 12px;
+    --text-field-font-size: 16px;
+}
+
+.text-field-label {
+    text-align: start;
+    font-size: 14px;
+    font-weight: 600;
+    padding-bottom: 6px;
+    color: var(--accent-11);
+}
+
+.button {
+    --button-color: var(--accent-11);
+    --button-background: var(--accent-3); 
+    --button-background-hover: var(--accent-5);
+    --button-border-color: transparent;
+    --button-height: 32px;
+    --button-indent: 8px;
+    --button-font-size: 14px;
+    text-align: center;
+    font-weight: 500;
+    cursor: pointer;
+    border-radius: var(--radius);
+    border: 1px solid var(--button-border-color);
+    color: var(--button-color);
+    background: var(--button-background);
+    height: var(--button-height);
+    padding: 0 var(--button-indent);
+    font-size: var(--button-font-size);
+}
+
+.button:hover {
+    background: var(--button-background-hover);
+}
+
+.button.large {
+    --button-height: 36px;
+    --button-indent: 12px;
+    --button-font-size: 16px;
+}
+
+.button.primary {
+    --button-color: var(--primary-11);
+    --button-background: var(--primary-3);
+    --button-background-hover: var(--primary-4);
+    --button-border-color: var(--primary-7);
+}
+
+/* LOGIN AND REGISTER */
+.auth-page {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 24px;
+}
+
+.auth-content {
+    text-align: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    margin-top: 5vh;
+    margin-bottom: 20vh;
+    width: 100%;
+}
+
+.auth-box {
+    width: 100%;
+    max-width: 400px;
+    padding: 32px;
+    padding-top: 8px;
+    border-radius: calc(var(--radius) * 2);
+    background: var(--background);
+    border: 1px solid var(--accent-6);
+    margin: 24px 0;
+}
+
+.auth-input {
+    display: block;
+    margin: 24px 0;
+}

@@ -24,7 +24,7 @@
                         <input name="firstName" type="text" class="text-field large" placeholder="Enter your first name" required />
                     </label>
                     <label class="auth-input">
-                        <div class="text-field-label">Password</div>
+                        <div class="text-field-label">Date of Birth</div>
                         <input name="dob" type="date" class="text-field large" placeholder="Enter DOB" required />
                     </label>
                     <button type="submit" style="width: 100%" class="button primary large">Register</button>

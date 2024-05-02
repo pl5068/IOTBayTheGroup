@@ -20,14 +20,12 @@ public class user_register extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
-            System.out.print("blerg");
             DBConnector connector = new DBConnector();
 
             Connection conn = connector.openConnection();
 
             DBManager db = new DBManager(conn);
             
-            System.out.print("blerg");
 
             String email = request.getParameter("email");
             String password = request.getParameter("password");
@@ -36,7 +34,7 @@ public class user_register extends HttpServlet {
 
             System.out.print(email + password + firstName + dob);
             HttpSession session = request.getSession();
-            if (email != null && password != null && firstName != null && dob != null) {
+            if ( email != null && password != null && firstName != null && dob != null) {
 
                 db.addUser(email, firstName, password, dob);
                 User user = new User(email, firstName, password, dob);

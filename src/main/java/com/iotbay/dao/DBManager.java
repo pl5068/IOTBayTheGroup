@@ -13,16 +13,17 @@ public class DBManager {
 
 //Find user by email and password in the database   
     public User findUser(String email, String password) throws SQLException {
-        String fetch = "select * from ISDUSER.users where EMAIL = '" + email + "' and PASSWORD='" + password + "'"; 
+        String fetch = "select * from `iotbay-database`.users where EMAIL = '" + email + "' and PASSWORD='" + password + "'"; 
         ResultSet rs = st.executeQuery(fetch);
         
         while (rs.next()) {
-            String userEmail = rs.getString(1).replaceAll("\\s", "");
-            String userPassword = rs.getString(3).replaceAll("\\s", "");
+            String userEmail = rs.getString(2);
+            String userPassword = rs.getString(4);
             if (userEmail.equals(email) && userPassword.equals(password)) {
-                String userFirstName = rs.getString(2).replaceAll("\\s", "");
-                String userDOB = rs.getString(4).replaceAll("\\s", "");
-                return new User(userEmail, userFirstName, userPassword, userDOB);
+                int userId = rs.getInt(1);
+                String userFirstName = rs.getString(3);
+                String userDOB = rs.getString(5);
+                return new User(userId, userEmail, userFirstName, userPassword, userDOB);
             }
         }
         
@@ -31,17 +32,17 @@ public class DBManager {
 
 //Add a user-data into the database   
     public void addUser(String email, String firstName, String password, String dob) throws SQLException { 
-        st.executeUpdate("INSERT INTO ISDUSER.users VALUES ('" + email + "', '" + firstName + "', '" + password + "', '" + dob + "')");
+        st.executeUpdate("INSERT INTO `iotbay-database`.users (email, firstName, password, dob) VALUES ('" + email + "', '" + firstName + "', '" + password + "', '" + dob + "')");
     }
 
 //update a user details in the database   
-    public void updateUser(String email, String firstName, String password, String dob) throws SQLException {
+    public void updateUser(int id, String email, String firstName, String password, String dob) throws SQLException {
         //code for update-operation   
 
     }
 
 //delete a user from the database   
-    public void deleteUser(String email) throws SQLException {
+    public void deleteUser(int id) throws SQLException {
         //code for delete-operation   
 
     }

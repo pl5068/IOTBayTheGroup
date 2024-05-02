@@ -1,5 +1,4 @@
 com\iotbay\controller\TestDB.class
-META-INF\persistence.xml
 com\iotbay\dao\DBManager.class
 com\iotbay\controller\user_logout.class
 com\iotbay\controller\user_register.class

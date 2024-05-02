@@ -3,16 +3,29 @@ package com.iotbay.iotbaydemo;
 
 
 public class User {
+    private int id;
     private String email;
     private String firstName;
     private String password;
     private String dob;
-    
+
     public User(String email, String firstName, String password, String dob) {
         this.email = email;
         this.firstName = firstName;
         this.password = password;
         this.dob = dob;
+    }
+    
+    public User(int id, String email, String firstName, String password, String dob) {
+        this.id = id;
+        this.email = email;
+        this.firstName = firstName;
+        this.password = password;
+        this.dob = dob;
+    }
+    
+    public int getId() {
+        return id;
     }
 
     public String getEmail() {

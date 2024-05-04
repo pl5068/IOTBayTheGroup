@@ -18,12 +18,14 @@ public class DBManager {
         
         while (rs.next()) {
             String userEmail = rs.getString(2);
-            String userPassword = rs.getString(4);
+            String userPassword = rs.getString(5);
             if (userEmail.equals(email) && userPassword.equals(password)) {
                 int userId = rs.getInt(1);
                 String userFirstName = rs.getString(3);
-                String userDOB = rs.getString(5);
-                return new User(userId, userEmail, userFirstName, userPassword, userDOB);
+                String userLastName = rs.getString(4);
+                String userDOB = rs.getString(6);
+                String userPhoneNumber = rs.getString(7);
+                return new User(userId, userEmail, userFirstName, userLastName, userPassword, userDOB, userPhoneNumber);
             }
         }
         
@@ -31,12 +33,12 @@ public class DBManager {
     }
 
 //Add a user-data into the database   
-    public void addUser(String email, String firstName, String password, String dob) throws SQLException { 
-        st.executeUpdate("INSERT INTO `iotbay-database`.users (email, firstName, password, dob) VALUES ('" + email + "', '" + firstName + "', '" + password + "', '" + dob + "')");
+    public void addUser(String email, String firstName, String lastName, String password, String dob, String phoneNumber) throws SQLException { 
+        st.executeUpdate("INSERT INTO `iotbay-database`.users (email, firstName, lastName, password, dob, phoneNumber) VALUES ('" + email + "', '" + firstName + "', '" + lastName + "', '" + password + "', '" + dob + "', '" + phoneNumber +  "')" );
     }
 
 //update a user details in the database   
-    public void updateUser(int id, String email, String firstName, String password, String dob) throws SQLException {
+    public void updateUser(int id, String email, String firstName, String lastName, String password, String dob, String phoneNumber) throws SQLException {
         //code for update-operation   
 
     }

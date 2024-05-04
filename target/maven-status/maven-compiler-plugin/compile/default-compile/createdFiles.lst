@@ -3,7 +3,6 @@ com\iotbay\dao\DBManager.class
 com\iotbay\controller\user_logout.class
 com\iotbay\controller\user_register.class
 com\iotbay\dao\DB.class
-com\isdbay\iotbaydemo\resources\JakartaEE10Resource.class
 com\iotbay\controller\user_login.class
 com\iotbay\iotbaydemo\User.class
 com\iotbay\dao\DBConnector.class

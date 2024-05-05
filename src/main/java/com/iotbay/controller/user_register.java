@@ -40,7 +40,7 @@ public class user_register extends HttpServlet {
 
                 db.addUser(email, firstName, lastName, password, dob, phoneNumber);
                 User user = new User(email, firstName, lastName, password, dob, phoneNumber);
-                System.out.print(user.getEmail());
+
                 session.setAttribute("user", user);
                 response.sendRedirect("welcomePage.jsp");
                 conn.close();

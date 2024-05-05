@@ -2,6 +2,9 @@ package com.iotbay.dao;
 
 import com.iotbay.iotbaydemo.User;
 import java.sql.*;
+import java.sql.Timestamp;
+import java.util.Date;
+import misc.Utils;
 
 public class DBManager {
 
@@ -35,6 +38,11 @@ public class DBManager {
 //Add a user-data into the database   
     public void addUser(String email, String firstName, String lastName, String password, String dob, String phoneNumber) throws SQLException { 
         st.executeUpdate("INSERT INTO `iotbay-database`.users (email, firstName, lastName, password, dob, phoneNumber) VALUES ('" + email + "', '" + firstName + "', '" + lastName + "', '" + password + "', '" + dob + "', '" + phoneNumber +  "')" );
+        ResultSet rs = st.executeQuery("select id from `iotbay-database`.users where EMAIL = '" + email + "'");
+        rs.next();
+        int uid = rs.getInt(1);
+        String q = "insert into `iotbay-database`.access_log (userid, log_action, time_operation) values ('" + uid + "','regUser', '" + Utils.getLocalTimestamp() + "')";
+        st.executeUpdate(q);
     }
 
 //update a user details in the database   

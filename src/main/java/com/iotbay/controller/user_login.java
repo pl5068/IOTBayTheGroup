@@ -36,6 +36,7 @@ public class user_login extends HttpServlet {
                 System.out.print("Login Found");
                 
                 session.setAttribute("user", user);
+                db.logInTimestamp(user.getId());
                 response.sendRedirect("welcomePage.jsp");
                 conn.close();
                 return;

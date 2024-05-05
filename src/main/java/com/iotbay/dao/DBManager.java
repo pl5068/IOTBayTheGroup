@@ -34,6 +34,14 @@ public class DBManager {
         
         return null;
     }
+    
+    public void logInTimestamp(int uid) throws SQLException {
+        st.executeUpdate("insert into `iotbay-database`.access_log (userid, log_action, time_operation) values ('" + uid + "','logIn', '" + Utils.getLocalTimestamp() + "')");
+    }
+    
+    public void logOutTimestamp(int uid) throws SQLException {
+        st.executeUpdate("insert into `iotbay-database`.access_log (userid, log_action, time_operation) values ('" + uid + "','logOut', '" + Utils.getLocalTimestamp() + "')");
+    }
 
 //Add a user-data into the database   
     public void addUser(String email, String firstName, String lastName, String password, String dob, String phoneNumber) throws SQLException { 

@@ -19,7 +19,18 @@ public class user_logout extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.sendRedirect("welcomePage.jsp");
+        try {
+            DBConnector connector = new DBConnector();
+            Connection conn = connector.openConnection();
+            DBManager db = new DBManager(conn);
+            HttpSession session = request.getSession();
+            User user = (User) session.getAttribute("user");
+            db.logOutTimestamp(user.getId());
+            session.invalidate(); 
+            response.sendRedirect("logoutPage.jsp");
+        } catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(TestDB.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
 

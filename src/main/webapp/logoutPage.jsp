@@ -5,7 +5,6 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Logged Out | IOTBay</title>
         <link href='styles/common.css' rel="stylesheet" type="text/css">
-        <%session.invalidate();        %>
     </head>
     <body style="background: var(--accent-2)">
         <div style="min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center">

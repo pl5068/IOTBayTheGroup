@@ -61,8 +61,7 @@ public class DBManager {
 
 //delete a user from the database   
     public void deleteUser(int id) throws SQLException {
-        //code for delete-operation   
-
+        st.executeUpdate(" DELETE FROM `iotbay-database`.users WHERE id=" + id + "; ");
     }
 
 }

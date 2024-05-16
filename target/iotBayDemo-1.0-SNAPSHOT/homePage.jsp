@@ -34,18 +34,18 @@
             </div>
             <a href="user_logout">Sign out</a>
             <form action="user_delete" method="post" class="auth-box">
-                    <button type="submit" style="width: 100%" class="button primary large">Delete account</button>
-                    <input type="hidden" value="no" name="confirmed">
-                    <input type="hidden" value="<%= ((User) request.getSession().getAttribute("user")).getId() %>" name="id">       
-                    <%
-                        String confirmed = request.getParameter("confirmed");
-                        if (confirmed != null && confirmed.equals("no")) {
-                    %>
-                    <p id="error">Are you sure?</p>
-                    <% }%>
-
-                </form>
-            <button href="user_delete" onclick="confirmation(this)">Delete account</button>
+                <button type="submit" value="confirmation" style="width: 100%" class="button primary large">Delete account</button>
+                <input type="hidden" value="no" name="confirmed">
+                <input type="hidden" value="<%= ((User) request.getSession().getAttribute("user")).getId()%>" name="id">       
+                <%
+                    String confirmed = request.getParameter("confirmed");
+                    if (confirmed != null && confirmed.equals("no")) {
+                %>
+                <p id="error">Are you sure?</p>
+                <button type="submit" value="yes" name="conf" >Yes</button>
+                <button type="submit" value="no" name="conf" >No</button>
+                <% }%>
+            </form>
         </div>
     </body>
 </html>

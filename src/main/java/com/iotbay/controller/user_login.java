@@ -20,6 +20,7 @@ public class user_login extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
+            
             DBConnector connector = new DBConnector();
 
             Connection conn = connector.openConnection();

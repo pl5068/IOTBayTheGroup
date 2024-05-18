@@ -10,11 +10,11 @@
     <c:set var="isAdmin" value="true" />
 
     <jsp:include page="/templates/navbar.jsp" />
-    <div class="max-w-5xl mx-auto">
-      <form class="mt-4 mb-12" action="catalogue_view" method="GET">
+    <div class="max-w-5xl mx-auto px-6 w-full">
+      <form class="mt-4 mb-12 w-full" action="catalogue_view" method="GET">
         <div class="flex flex-col">
           <div class="relative">
-            <input type="text" name="search" class="w-full relative flex rounded-xl bg-white text-base h-12 px-4 outline-none ring-1 ring-inset ring-[rgba(0,0,0,.2)] focus:ring-2 focus:ring-[var(--primary-8)]" placeholder="Search the catalogue..." />
+            <input type="text" name="search" class="w-full relative flex rounded-xl bg-white text-base h-12 px-4 outline-none ring-1 ring-inset ring-[rgba(0,0,0,.2)] focus:ring-2 focus:ring-[var(--primary-8)]" placeholder="Search the catalogue..." value="${param.search}" />
             <button type="submit" class="flex items-center absolute right-0 inset-y-0 px-4 text-gray-600">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-6"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
             </button>
@@ -23,9 +23,9 @@
             <div class="flex gap-2">
               <div class="relative">
                 <select name="sort" class="appearance-none flex flex-shrink-0 items-center justify-center gap-2 rounded-lg bg-white px-3 pr-10 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
-                  <option value="name">Best match</option>
-                  <option value="price">Price (low to high)</option>
-                  <option value="price_desc">Price (high to low)</option>
+                  <option value="name" <c:if test="${param.sort eq 'name'}">selected</c:if>>Best Match</option>
+                  <option value="price" <c:if test="${param.sort eq 'price'}">selected</c:if>>Price (low to high)</option>
+                  <option value="price_desc" <c:if test="${param.sort eq 'price_desc'}">selected</c:if>>Price (high to low)</option>
                 </select>
                 <div class="flex items-center absolute right-0 inset-y-0 px-3 pointer-events-none">
                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-4"><path d="m7 15 5 5 5-5"/><path d="m7 9 5-5 5 5"/></svg>
@@ -35,7 +35,7 @@
                 <select name="category" class="appearance-none flex flex-shrink-0 items-center justify-center gap-2 rounded-lg bg-white px-3 pr-10 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
                   <option value="all">All categories</option>
                   <c:forEach var="category" items="${categories}">
-                    <option value="${category}">${category}</option>
+                    <option value="${category}" <c:if test="${category eq param.category}">selected</c:if>>${category}</option>
                   </c:forEach>
                 </select>
                 <div class="flex items-center absolute right-0 inset-y-0 px-3 pointer-events-none">
@@ -43,13 +43,14 @@
                 </div>
               </div>
               <div class="flex flex-shrink-0 items-center justify-center gap-2 rounded-lg bg-white px-3 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
-                <input type="checkbox" name="inStock" id="inStock" />
+                <input type="checkbox" name="inStock" id="inStock" <c:if test="${param.inStock eq 'on'}">checked</c:if> />
                 <label for="inStock">In stock only</label>
               </div>
             </div>
-            <div class="flex items-center gap-2">
-              <button type="submit" class="flex gap-2 w-full px-3 py-2 text-sm font-semibold items-center justify-center rounded-full ring-1 ring-inset ring-[var(--primary-7)] bg-[var(--primary-3)] text-[var(--primary-11)] hover:bg-[var(--primary-4)]">Apply Filters</button>
+            <div class="flex items-center gap-2 flex-shrink-0">
+              <button type="submit" class="flex flex-shrink-0 gap-2 px-3 py-2 text-sm font-semibold items-center justify-center rounded-full ring-1 ring-inset ring-[var(--primary-7)] bg-[var(--primary-3)] text-[var(--primary-11)] hover:bg-[var(--primary-4)]">Apply Filters</button>
               <c:if test="${isAdmin}">
+                <div class="h-4/5 w-px bg-gray-300 mx-2"></div>
                 <button onclick="openAddProduct()" type="button" class="flex flex-shrink-0 items-center gap-2 rounded-full bg-emerald-50 px-3 py-2 text-sm font-semibold text-emerald-900 ring-1 ring-inset ring-emerald-300 hover:bg-emerald-100">
                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-4"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
                   <span>Add Item</span>
@@ -61,27 +62,29 @@
       </form>
 
       <c:if test="${empty products}">
-        <div class="flex h-screen items-center justify-center">
-          <div class="text-2xl font-bold text-gray-500">No products found</div>
+        <div class="flex h-80 flex-col items-center justify-center text-gray-600 border border-gray-300 border-dashed rounded-2xl">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-12 text-gray-900"><circle cx="12" cy="12" r="10"/><path d="M16 16s-1.5-2-4-2-4 2-4 2"/><line x1="9" x2="9.01" y1="9" y2="9"/><line x1="15" x2="15.01" y1="9" y2="9"/></svg>
+          <h1 class="text-2xl font-bold text-gray-900 mt-6">No products found!</h1>
+          <p class="text-base">Try changing your filters and query</p>
         </div>
       </c:if>
       <c:if test="${not empty products}">
         <div
-          class="grid grid-flow-row grid-cols-2 gap-6 px-1 md:grid-cols-3 lg:grid-cols-4"
+          class="grid mb-12 grid-flow-row grid-cols-2 gap-6 px-1 md:grid-cols-3 lg:grid-cols-4"
         >
           <c:forEach var="product" items="${products}">
-            <div class="flex flex-col gap-4">
+            <div class="flex flex-col gap-4 mb-2">
               <img
                 src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAAtJREFUGFdjYAACAAAFAAGq1chRAAAAAElFTkSuQmCC"
                 data-src="images/product/${product.id}.jpg"
                 alt
                 width="800"
                 height="800"
-                class="h-full w-full rounded-lg object-contain text-transparent ring ring-gray-200 ring-offset-2"
+                class="h-full w-full rounded-lg object-contain text-transparent ring ring-gray-100 ring-offset-2"
               />
               <div class="flex flex-col">
                 <h3 class="text-md font-semibold text-gray-900">${product.name}</h3>
-                <p class="text-base text-gray-500 min-h-6">${product.description}</p>
+                <p class="text-sm text-gray-500 min-h-6">${product.description}</p>
                 <div class="flex gap-2 items-end">
                   <div class="flex text-2xl font-bold leading-6 mt-3">
                     <span class="relative top-[-1px] text-xs">$</span>

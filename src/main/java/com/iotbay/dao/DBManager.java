@@ -64,5 +64,4 @@ public class DBManager {
         //code for delete-operation   
 
     }
-
 }

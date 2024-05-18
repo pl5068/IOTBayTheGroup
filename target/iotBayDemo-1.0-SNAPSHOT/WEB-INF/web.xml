@@ -12,6 +12,10 @@
         <servlet-name>user_register</servlet-name>
         <servlet-class>com.iotbay.controller.user_register</servlet-class>
     </servlet>
+     <servlet>
+        <servlet-name>Cart</servlet-name>
+        <servlet-class>com.iotbay.controller.Cart</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>user_login</servlet-name>
         <url-pattern>/user_login</url-pattern>
@@ -23,7 +27,15 @@
     <servlet-mapping>
         <servlet-name>user_register</servlet-name>
         <url-pattern>/user_register</url-pattern>
+        
     </servlet-mapping>
+    
+        <servlet-mapping>
+        <servlet-name>Cart</servlet-name>
+        <url-pattern>/Cart</url-pattern>
+        
+    </servlet-mapping>
+    
     <session-config>
         <session-timeout>
             30

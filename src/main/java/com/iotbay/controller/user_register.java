@@ -41,8 +41,10 @@ public class user_register extends HttpServlet {
                 db.addUser(email, firstName, lastName, password, dob, phoneNumber);
                 User user = new User(email, firstName, lastName, password, dob, phoneNumber);
 
-                session.setAttribute("user", user);
-                response.sendRedirect("welcomePage.jsp");
+                
+                
+               
+                response.sendRedirect("checkoutPage.jsp");
                 conn.close();
                 return;
             }

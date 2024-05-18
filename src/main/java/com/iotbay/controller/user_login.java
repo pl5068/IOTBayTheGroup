@@ -37,7 +37,7 @@ public class user_login extends HttpServlet {
                 
                 session.setAttribute("user", user);
                 db.logInTimestamp(user.getId());
-                response.sendRedirect("welcomePage.jsp");
+                response.sendRedirect("checkoutPage.jsp");
                 conn.close();
                 return;
             }

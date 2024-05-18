@@ -45,6 +45,7 @@
                         <p>Phone: <b><jsp:getProperty name = "user" property = "phoneNumber"/></b></p>
                         <p>DOB: <b><jsp:getProperty name = "user" property = "dob"/></b></p>
                         <p>Thanks for being a customer of IOTBay!</p>
+                        <a href="logsPage.jsp" >My Access Logs</a>
                     </c:otherwise>
                 </c:choose>
             </div>

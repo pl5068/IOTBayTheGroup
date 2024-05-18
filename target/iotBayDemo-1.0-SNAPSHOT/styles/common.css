@@ -190,3 +190,70 @@ body {
     display: block;
     margin: 24px 0;
 }
+
+/* CHECKOUT PAGE */
+.delivery-info {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 24px;
+}
+
+.delivery-content {
+    text-align: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    margin-top: 5vh;
+    margin-bottom: 20vh;
+    margin-right: 50vh;
+    width: 50%;
+}
+
+.delivery-box {
+    width: 100%;
+    max-width: 600px;
+    padding: 32px;
+    padding-top: 8px;
+    border-radius: calc(var(--radius) * 2);
+    background: var(--background);
+    border: 1px solid var(--accent-6);
+    margin: 24px 0;
+}
+
+.delivery-input {
+    display: inline-flex;
+    flex-direction: column;
+    padding-right: 24px;
+    margin: 24px 0;
+}
+
+.text-field.postcode {
+    --text-field-height: 36px;
+    --text-field-indent: 12px;
+    --text-field-font-size: 16px;
+    width: 50%;
+}
+
+.button.payment {
+    --button-height: 48px;
+    --button-indent: 12px;
+    --button-font-size: 18px;
+}
+
+/* CART ON CHECKOUT PAGE */
+.order-info{
+   
+}
+
+.order-box{
+    width: 100%;
+    max-width: 300px;
+    padding: 32px;
+    padding-top: 8px;
+    border-radius: calc(var(--radius) * 2);
+    background: var(--background);
+    border: 1px solid var(--accent-6);
+    margin: 24px 0;
+}

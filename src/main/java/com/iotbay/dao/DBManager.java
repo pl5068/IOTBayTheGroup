@@ -28,7 +28,8 @@ public class DBManager {
                 String userLastName = rs.getString(4);
                 String userDOB = rs.getString(6);
                 String userPhoneNumber = rs.getString(7);
-                return new User(userId, userEmail, userFirstName, userLastName, userPassword, userDOB, userPhoneNumber);
+                String userRole = rs.getString(8);
+                return new User(userId, userEmail, userFirstName, userLastName, userPassword, userDOB, userPhoneNumber, userRole);
             }
         }
         
@@ -44,8 +45,8 @@ public class DBManager {
     }
 
 //Add a user-data into the database   
-    public void addUser(String email, String firstName, String lastName, String password, String dob, String phoneNumber) throws SQLException { 
-        st.executeUpdate("INSERT INTO `iotbay-database`.users (email, firstName, lastName, password, dob, phoneNumber) VALUES ('" + email + "', '" + firstName + "', '" + lastName + "', '" + password + "', '" + dob + "', '" + phoneNumber +  "')" );
+    public void addUser(String email, String firstName, String lastName, String password, String dob, String phoneNumber, String role) throws SQLException { 
+        st.executeUpdate("INSERT INTO `iotbay-database`.users (email, firstName, lastName, password, dob, phoneNumber, userRole) VALUES ('" + email + "', '" + firstName + "', '" + lastName + "', '" + password + "', '" + dob + "', '" + phoneNumber + "', '" + role + "')" );
         ResultSet rs = st.executeQuery("select id from `iotbay-database`.users where EMAIL = '" + email + "'");
         rs.next();
         int uid = rs.getInt(1);

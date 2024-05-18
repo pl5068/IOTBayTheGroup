@@ -12,14 +12,12 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import java.util.HashSet;
 
 public class user_delete extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
-            System.out.print("call post");
            
             DBConnector connector = new DBConnector();
 
@@ -27,10 +25,10 @@ public class user_delete extends HttpServlet {
 
             DBManager db = new DBManager(conn);
 
-            String confirmed = request.getParameter("confirmed");
+            String delete = request.getParameter("delete");
 
-            if (confirmed.equals("no")) {               
-                request.getRequestDispatcher("homePage.jsp").forward(request, response);
+            if (!delete.equals("confirm")) {               
+                request.getRequestDispatcher("profilePage.jsp").forward(request, response);
                 return;
             }
 
@@ -41,13 +39,14 @@ public class user_delete extends HttpServlet {
             HttpSession session = request.getSession();
             // db.deleteTimestamp(user.getId());
             session.invalidate();
-            response.sendRedirect("index.html");
+            
+            response.sendRedirect("accountDeletedPage.html");
 
             conn.close();
 
         } catch (ClassNotFoundException | SQLException ex) {
-
             Logger.getLogger(TestDB.class.getName()).log(Level.SEVERE, null, ex);
+            response.sendRedirect("sqlError.html");
         }
     }
 }

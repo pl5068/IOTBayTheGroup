@@ -12,6 +12,22 @@
         <servlet-name>user_register</servlet-name>
         <servlet-class>com.iotbay.controller.user_register</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>user_register_admin</servlet-name>
+        <servlet-class>com.iotbay.controller.user_register_admin</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>user_delete_admin</servlet-name>
+        <servlet-class>com.iotbay.controller.user_delete_admin</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>user_edit_admin</servlet-name>
+        <servlet-class>com.iotbay.controller.user_edit_admin</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>user_list_admin</servlet-name>
+        <servlet-class>com.iotbay.controller.user_list_admin</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>user_login</servlet-name>
         <url-pattern>/user_login</url-pattern>
@@ -23,6 +39,22 @@
     <servlet-mapping>
         <servlet-name>user_register</servlet-name>
         <url-pattern>/user_register</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>user_register_admin</servlet-name>
+        <url-pattern>/user_register_admin</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>user_delete_admin</servlet-name>
+        <url-pattern>/user_delete_admin</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>user_edit_admin</servlet-name>
+        <url-pattern>/user_edit_admin</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>user_list_admin</servlet-name>
+        <url-pattern>/user_list_admin</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

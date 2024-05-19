@@ -11,7 +11,9 @@
             <div class="auth-content">
                 <h1>Welcome, <jsp:getProperty name = "user" property = "firstName"/>!</h1>
                 <a href="homePage.jsp">Continue to main page</a>
+                <a href="user_list_admin">Continue to admin page</a>
             </div>
         </div>
     </body>
 </html>
+

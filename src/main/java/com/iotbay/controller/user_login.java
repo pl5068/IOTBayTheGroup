@@ -29,6 +29,8 @@ public class user_login extends HttpServlet {
             String email = request.getParameter("email");
             String password = request.getParameter("password");
             
+            
+            
             User user = db.findUser(email, password);
             HttpSession session = request.getSession();
 

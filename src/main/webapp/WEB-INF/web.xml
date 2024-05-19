@@ -17,6 +17,10 @@
         <servlet-class>com.iotbay.controller.Cart</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>order_add</servlet-name>
+        <servlet-class>com.iotbay.controller.order_add</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>add_delivery_info</servlet-name>
         <servlet-class>com.iotbay.controller.add_delivery_info</servlet-class>
     </servlet>
@@ -38,6 +42,10 @@
         <servlet-name>Cart</servlet-name>
         <url-pattern>/Cart</url-pattern>
         
+    </servlet-mapping>
+     <servlet-mapping>
+        <servlet-name>order_add</servlet-name>
+        <url-pattern>/order_add</url-pattern>
     </servlet-mapping>
 
     <servlet>

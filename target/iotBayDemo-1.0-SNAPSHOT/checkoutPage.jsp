@@ -65,6 +65,7 @@
                     function calcTotal() {
                         var total = 0;
                         var table = document.getElementById("order_table");
+                        var table = document.getElementById("order_table");
                         var rows = table.getElementsByTagName("tr");
 
                         for (var i = 0; i < rows.length; i++) {

@@ -2,7 +2,6 @@ com\iotbay\controller\TestDB.class
 com\iotbay\controller\user_edit.class
 com\iotbay\controller\user_register.class
 com\iotbay\dao\DB.class
-com\iotbay\controller\user_delete.class
 com\iotbay\iotbaydemo\User.class
 com\iotbay\iotbaydemo\JakartaRestConfiguration.class
 com\iotbay\dao\DBManager.class

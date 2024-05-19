@@ -50,10 +50,10 @@
                 <div class="order-box">
                     <table class="order-table" id="order_table">
                         <tbody>
-                            <c:forEach var="item" items="${cartItems}" >
+                            <c:forEach var="item" items="${sessionScope.cartItems}" >
                                 <tr>
                                     <td> <c:out value="${item.name}"/></td>
-                                    <td> <c:out value="${item.unitPrice}"/></td>
+                                    <td> $<c:out value="${item.unitPrice}"/></td>
                                 </tr>
                             </c:forEach>
                         </tbody>
@@ -64,7 +64,6 @@
                 <script>
                     function calcTotal() {
                         var total = 0;
-                        var table = document.getElementById("order_table");
                         var table = document.getElementById("order_table");
                         var rows = table.getElementsByTagName("tr");
 
@@ -77,7 +76,7 @@
                         }
 
                         total += parseFloat(document.querySelector(".shipping_cost").innerText.replace('Shipping - $', ''));
-                        document.getElementById("total_price").innerText = "Total - $" + total.toFixed(2);
+                        document.getElementById("total_price").innerHTML = "<strong>Total</strong> - $" + total.toFixed(2);
                     }
 
                     calcTotal();

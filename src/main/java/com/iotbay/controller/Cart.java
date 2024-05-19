@@ -14,7 +14,6 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import java.util.ArrayList;
 import java.util.List;
 
 public class Cart extends HttpServlet {
@@ -39,24 +38,18 @@ public class Cart extends HttpServlet {
             Products product = new Products(conn);
             int orderId = db.getOrderId();
             
-           
-           List<Product> products;
-                    
-                   
-               
-            products = db.orderLines(orderId) ;
+            List<Product> products;
+            products = db.orderLines(orderId);
             
-             request.setAttribute("cartItems", products);
-         /*
-            request.setAttribute("attributeName", attributeObject);   */
-            request.getRequestDispatcher("cart.jsp").forward(request, response);
-            conn.close();
-            // Get customer id from session
-            /*  db.makeOrder(customerId, productId, price, street, city, state, postcode);*/
+            // Set cart items in session
+            session.setAttribute("cartItems", products);
 
+            // Forward to the cart.jsp or checkoutPage.jsp
+            request.getRequestDispatcher("checkoutPage.jsp").forward(request, response);
+            conn.close();
+            
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(Cart.class.getName()).log(Level.SEVERE, null, ex);
         }
-
     }
 }

@@ -35,6 +35,6 @@
         </tbody>
     </table>
     
-     <a href="checkoutPage.jsp" class="button">Proceed to Checkout</a>
+     <a href="checkoutPage.jsp" class="button primary payment">Proceed to Checkout</a>
 </body>
 </html>

@@ -46,7 +46,7 @@ public class order_add extends HttpServlet {
             
             
             
-            response.sendRedirect("catalogue.jsp");
+            response.sendRedirect("catalogue_view");
 
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(order_add.class.getName()).log(Level.SEVERE, null, ex);

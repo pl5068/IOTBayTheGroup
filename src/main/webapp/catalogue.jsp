@@ -97,7 +97,7 @@
                                     <span class="text-sm text-gray-500 leading-6">per unit</span>
                                 </div>
                                 <div class="flex gap-2 mt-4">
-                                    <form action="order_add" method="post" class="delivery-box">
+                                    <form action="order_add" method="post">
                                   
                                         <input type="hidden" name="productId" placeholder="Product ID" value="${product.id}">
                                         

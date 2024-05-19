@@ -1,198 +1,147 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+<%@ page contentType="text/html;charset=UTF-8" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<!doctype html>
 <html>
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>IoT Bay</title>
-    <link href="styles/common.css" rel="stylesheet" type="text/css" />
-    <link href='styles/index.css' rel="stylesheet" type="text/css">
-    <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body>
-    <div class="container mx-auto my-8">
-        <h2 class="text-2xl font-bold mb-6 text-center">IoT Bay</h2>
-        <% if (request.getSession().getAttribute("user") != null) { %>
-            <h1 class="mb-6">Welcome, <jsp:getProperty name="user" property="firstName"/>!</h1>
-        <% } else { %>
-            <a href="logInPage.jsp" class="text-blue-500 hover:underline mb-6 block text-center">Please login</a>
-        <% } %>
-        <div class="flex flex-wrap justify-center -mx-8">
-            <!-- Raspberry Pi Card -->
-            <div class="w-full md:w-1/2 lg:w-1/3 px-8 mb-16">
-                <div class="flex bg-white shadow-md rounded-lg overflow-hidden">
-                    <div class="w-1/2 flex-shrink-0">
-                        <img src="img/raspberrypi.jpg" alt="" class="w-full h-full object-contain">
-                    </div>
-                    <div class="w-1/2 p-8">
-                        <h3 class="text-lg font-bold">Raspberry Pi</h3>
-                        <div class="flex justify-between items-center mt-3">
-                            <div>
-                                <div class="flex text-base items-center gap-2">
-                                    <div class="text-2xl font-medium text-black">$999</div>
-                                    <div class="text-gray-500">each</div>
-                                </div>
-                                <div class="text-base mt-2 text-gray-600">Low stock</div>
-                            </div>
-                            <form>
-                                <button type="submit" class="flex items-center justify-center w-12 h-12 bg-[var(--primary-3)] text-[var(--primary-11)] border border-[var(--primary-7)] rounded-full hover:bg-[var(--primary-4)]">
-                                    <div class="sr-only">Add to cart</div>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus">
-                                        <path d="M5 12h14" />
-                                        <path d="M12 5v14" />
-                                    </svg>
-                                </button>
-                            </form>
-                        </div>
-                    </div>
+  <head>
+    <jsp:include page="/templates/common.jsp" />
+    <title>JSP Page</title>
+  </head>
+  <body>
+    <c:set var="isAdmin" value="true" />
+
+    <jsp:include page="/templates/navbar.jsp" />
+    <div class="max-w-5xl mx-auto px-6 w-full">
+      <form class="mt-4 mb-12 w-full" action="catalogue_view" method="GET">
+        <div class="flex flex-col">
+          <div class="relative">
+            <input type="text" name="search" class="w-full relative flex rounded-xl bg-white text-base h-12 px-4 outline-none ring-1 ring-inset ring-[rgba(0,0,0,.2)] focus:ring-2 focus:ring-[var(--primary-8)]" placeholder="Search the catalogue..." value="${param.search}" />
+            <button type="submit" class="flex items-center absolute right-0 inset-y-0 px-4 text-gray-600">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-6"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+            </button>
+          </div>
+          <div class="flex mt-3 justify-between select-none">
+            <div class="flex gap-2">
+              <div class="relative">
+                <select name="sort" class="appearance-none flex flex-shrink-0 items-center justify-center gap-2 rounded-lg bg-white px-3 pr-10 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
+                  <option value="name" <c:if test="${param.sort eq 'name'}">selected</c:if>>Best Match</option>
+                  <option value="price" <c:if test="${param.sort eq 'price'}">selected</c:if>>Price (low to high)</option>
+                  <option value="price_desc" <c:if test="${param.sort eq 'price_desc'}">selected</c:if>>Price (high to low)</option>
+                </select>
+                <div class="flex items-center absolute right-0 inset-y-0 px-3 pointer-events-none">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-4"><path d="m7 15 5 5 5-5"/><path d="m7 9 5-5 5 5"/></svg>
                 </div>
-            </div>
-            <!-- Arduino Uno Card -->
-            <div class="w-full md:w-1/2 lg:w-1/3 px-8 mb-16">
-                <div class="flex bg-white shadow-md rounded-lg overflow-hidden">
-                    <div class="w-1/2 flex-shrink-0">
-                        <img src="img/arduinouno.jpg" alt="" class="w-full h-full object-contain">
-                    </div>
-                    <div class="w-1/2 p-8">
-                        <h3 class="text-lg font-bold">Arduino Uno</h3>
-                        <div class="flex justify-between items-center mt-3">
-                            <div>
-                                <div class="flex text-base items-center gap-2">
-                                    <div class="text-2xl font-medium text-black">$29.99</div>
-                                    <div class="text-gray-500">each</div>
-                                </div>
-                                <div class="text-base mt-2 text-gray-600">In stock</div>
-                            </div>
-                            <form>
-                                <button type="submit" class="flex items-center justify-center w-12 h-12 bg-[var(--primary-3)] text-[var(--primary-11)] border border-[var(--primary-7)] rounded-full hover:bg-[var(--primary-4)]">
-                                    <div class="sr-only">Add to cart</div>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus">
-                                        <path d="M5 12h14" />
-                                        <path d="M12 5v14" />
-                                    </svg>
-                                </button>
-                            </form>
-                        </div>
-                    </div>
+              </div>
+              <div class="relative">
+                <select name="category" class="appearance-none flex flex-shrink-0 items-center justify-center gap-2 rounded-lg bg-white px-3 pr-10 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
+                  <option value="all">All categories</option>
+                  <c:forEach var="category" items="${categories}">
+                    <option value="${category}" <c:if test="${category eq param.category}">selected</c:if>>${category}</option>
+                  </c:forEach>
+                </select>
+                <div class="flex items-center absolute right-0 inset-y-0 px-3 pointer-events-none">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-4"><path d="m7 15 5 5 5-5"/><path d="m7 9 5-5 5 5"/></svg>
                 </div>
+              </div>
+              <div class="flex flex-shrink-0 items-center justify-center gap-2 rounded-lg bg-white px-3 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
+                <input type="checkbox" name="inStock" id="inStock" <c:if test="${param.inStock eq 'on'}">checked</c:if> />
+                <label for="inStock">In stock only</label>
+              </div>
             </div>
-            <!-- ESP32 Board Card -->
-            <div class="w-full md:w-1/2 lg:w-1/3 px-8 mb-16">
-                <div class="flex bg-white shadow-md rounded-lg overflow-hidden">
-                    <div class="w-1/2 flex-shrink-0">
-                        <img src="img/esp32.jpg" alt="" class="w-full h-full object-contain">
-                    </div>
-                    <div class="w-1/2 p-8">
-                        <h3 class="text-lg font-bold">ESP32 Board</h3>
-                        <div class="flex justify-between items-center mt-3">
-                            <div>
-                                <div class="flex text-base items-center gap-2">
-                                    <div class="text-2xl font-medium text-black">$19.99</div>
-                                    <div class="text-gray-500">each</div>
-                                </div>
-                                <div class="text-base mt-2 text-gray-600">In stock</div>
-                            </div>
-                            <form>
-                                <button type="submit" class="flex items-center justify-center w-12 h-12 bg-[var(--primary-3)] text-[var(--primary-11)] border border-[var(--primary-7)] rounded-full hover:bg-[var(--primary-4)]">
-                                    <div class="sr-only">Add to cart</div>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus">
-                                        <path d="M5 12h14" />
-                                        <path d="M12 5v14" />
-                                    </svg>
-                                </button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
+            <div class="flex items-center gap-2 flex-shrink-0">
+              <button type="submit" class="flex flex-shrink-0 gap-2 px-3 py-2 text-sm font-semibold items-center justify-center rounded-full ring-1 ring-inset ring-[var(--primary-7)] bg-[var(--primary-3)] text-[var(--primary-11)] hover:bg-[var(--primary-4)]">Apply Filters</button>
+              <c:if test="${isAdmin}">
+                <div class="h-4/5 w-px bg-gray-300 mx-2"></div>
+                <button onclick="openAddProduct()" type="button" class="flex flex-shrink-0 items-center gap-2 rounded-full bg-emerald-50 px-3 py-2 text-sm font-semibold text-emerald-900 ring-1 ring-inset ring-emerald-300 hover:bg-emerald-100">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-4"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+                  <span>Add Item</span>
+                </button>
+              </c:if>
             </div>
-            <!-- Repeat the structure for the remaining products -->
-            <!-- Another Raspberry Pi Card -->
-            <div class="w-full md:w-1/2 lg:w-1/3 px-8 mb-16">
-                <div class="flex bg-white shadow-md rounded-lg overflow-hidden">
-                    <div class="w-1/2 flex-shrink-0">
-                        <img src="img/raspberrypi.jpg" alt="" class="w-full h-full object-contain">
-                    </div>
-                    <div class="w-1/2 p-8">
-                        <h3 class="text-lg font-bold">Raspberry Pi</h3>
-                        <div class="flex justify-between items-center mt-3">
-                            <div>
-                                <div class="flex text-base items-center gap-2">
-                                    <div class="text-2xl font-medium text-black">$999</div>
-                                    <div class="text-gray-500">each</div>
-                                </div>
-                                <div class="text-base mt-2 text-gray-600">Low stock</div>
-                            </div>
-                            <form>
-                                <button type="submit" class="flex items-center justify-center w-12 h-12 bg-[var(--primary-3)] text-[var(--primary-11)] border border-[var(--primary-7)] rounded-full hover:bg-[var(--primary-4)]">
-                                    <div class="sr-only">Add to cart</div>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus">
-                                        <path d="M5 12h14" />
-                                        <path d="M12 5v14" />
-                                    </svg>
-                                </button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Another Arduino Uno Card -->
-            <div class="w-full md:w-1/2 lg:w-1/3 px-8 mb-16">
-                <div class="flex bg-white shadow-md rounded-lg overflow-hidden">
-                    <div class="w-1/2 flex-shrink-0">
-                        <img src="img/arduinouno.jpg" alt="" class="w-full h-full object-contain">
-                    </div>
-                    <div class="w-1/2 p-8">
-                        <h3 class="text-lg font-bold">Arduino Uno</h3>
-                        <div class="flex justify-between items-center mt-3">
-                            <div>
-                                <div class="flex text-base items-center gap-2">
-                                    <div class="text-2xl font-medium text-black">$29.99</div>
-                                    <div class="text-gray-500">each</div>
-                                </div>
-                                <div class="text-base mt-2 text-gray-600">In stock</div>
-                            </div>
-                            <form>
-                                <button type="submit" class="flex items-center justify-center w-12 h-12 bg-[var(--primary-3)] text-[var(--primary-11)] border border-[var(--primary-7)] rounded-full hover:bg-[var(--primary-4)]">
-                                    <div class="sr-only">Add to cart</div>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus">
-                                        <path d="M5 12h14" />
-                                        <path d="M12 5v14" />
-                                    </svg>
-                                </button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Another ESP32 Board Card -->
-            <div class="w-full md:w-1/2 lg:w-1/3 px-8 mb-16">
-                <div class="flex bg-white shadow-md rounded-lg overflow-hidden">
-                    <div class="w-1/2 flex-shrink-0">
-                        <img src="img/esp32.jpg" alt="" class="w-full h-full object-contain">
-                    </div>
-                    <div class="w-1/2 p-8">
-                        <h3 class="text-lg font-bold">ESP32 Board</h3>
-                        <div class="flex justify-between items-center mt-3">
-                            <div>
-                                <div class="flex text-base items-center gap-2">
-                                    <div class="text-2xl font-medium text-black">$19.99</div>
-                                    <div class="text-gray-500">each</div>
-                                </div>
-                                <div class="text-base mt-2 text-gray-600">In stock</div>
-                            </div>
-                            <form>
-                                <button type="submit" class="flex items-center justify-center w-12 h-12 bg-[var(--primary-3)] text-[var(--primary-11)] border border-[var(--primary-7)] rounded-full hover:bg-[var(--primary-4)]">
-                                    <div class="sr-only">Add to cart</div>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus">
-                                        <path d="M5 12h14" />
-                                        <path d="M12 5v14" />
-                                    </svg>
-                                </button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
+          </div>
         </div>
+      </form>
+
+      <c:if test="${empty products}">
+        <div class="flex h-80 flex-col items-center justify-center text-gray-600 border border-gray-300 border-dashed rounded-2xl">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-12 text-gray-900"><circle cx="12" cy="12" r="10"/><path d="M16 16s-1.5-2-4-2-4 2-4 2"/><line x1="9" x2="9.01" y1="9" y2="9"/><line x1="15" x2="15.01" y1="9" y2="9"/></svg>
+          <h1 class="text-2xl font-bold text-gray-900 mt-6">No products found!</h1>
+          <p class="text-base">Try changing your filters and query</p>
+        </div>
+      </c:if>
+      <c:if test="${not empty products}">
+        <div
+          class="grid mb-12 grid-flow-row grid-cols-2 gap-6 px-1 md:grid-cols-3 lg:grid-cols-4"
+        >
+          <c:forEach var="product" items="${products}">
+            <div class="flex flex-col gap-4 mb-2">
+              <img
+                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAAtJREFUGFdjYAACAAAFAAGq1chRAAAAAElFTkSuQmCC"
+                data-src="images/product/${product.id}.jpg"
+                alt
+                width="800"
+                height="800"
+                class="h-full w-full rounded-lg object-contain text-transparent ring ring-gray-100 ring-offset-2"
+              />
+              <div class="flex flex-col">
+                <h3 class="text-md font-semibold text-gray-900">${product.name}</h3>
+                <p class="text-sm text-gray-500 min-h-6">${product.description}</p>
+                <div class="flex gap-2 items-end">
+                  <div class="flex text-2xl font-bold leading-6 mt-3">
+                    <span class="relative top-[-1px] text-xs">$</span>
+                    <span>${product.getDollars()}</span>
+                    <c:if test="${product.getCents() != 0}">
+                      <span class="relative top-[-1px] text-xs">.${product.getCents()}</span>
+                    </c:if>
+                  </div>
+                  <span class="text-sm text-gray-500 leading-6">per unit</span>
+                </div>
+                <div class="flex gap-2 mt-4">
+                  <button
+                    class="flex gap-2 w-full px-3 py-2 text-sm font-semibold items-center justify-center rounded-full ring-1 ring-inset ring-[var(--primary-7)] bg-[var(--primary-3)] text-[var(--primary-11)] hover:bg-[var(--primary-4)]"
+                  >
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-4"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
+                    <span>Add to Cart</span>
+                  </button>
+                  <c:if test="${isAdmin}">
+                    <button class="flex flex-shrink-0 justify-center items-center rounded-full bg-white w-9 h-9 text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50" onclick="openEditProduct('${product.name}', '${product.id}', '${product.description}', '${product.unitPrice}', '${product.unitStock}', '${product.category}')">
+                      <div class="sr-only">Edit</div>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-4"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/><path d="m15 5 4 4"/></svg>
+                    </button>
+                    <button class="flex flex-shrink-0 justify-center items-center rounded-full bg-white w-9 h-9 text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50" onclick="openConfirmDelete('${product.name}', '${product.id}')">
+                      <div class="sr-only">Delete</div>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-4"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/><line x1="10" x2="10" y1="11" y2="17"/><line x1="14" x2="14" y1="11" y2="17"/></svg>
+                    </button>
+                  </c:if>
+                </div>
+                <div class="flex text-sm text-gray-700 items-center mt-3">
+                  <c:if test="${product.unitStock == 0}">
+                    <div class="size-2 rounded-full bg-red-500"></div>
+                    <span class="ml-2">Out of stock</span>
+                  </c:if>
+                  <c:if test="${product.unitStock > 0 && product.unitStock < 10}">
+                    <div class="size-2 rounded-full bg-amber-500"></div>
+                    <span class="ml-2">Low stock!</span>
+                  </c:if>
+                  <c:if test="${product.unitStock >= 10}">
+                    <div class="size-2 rounded-full bg-emerald-500"></div>
+                    <span class="ml-2">In stock</span>
+                  </c:if>
+                  <c:if test="${product.unitStock > 0}">
+                    <span class="ml-1 opacity-65">(${product.unitStock} items)</span>
+                  </c:if>
+                </div>
+              </div>
+            </div>
+          </c:forEach>
+        </div>
+      </c:if>
     </div>
-</body>
+
+    <c:if test="${isAdmin}">
+      <jsp:include page="/templates/confirmDeletionModal.jsp" />
+      <jsp:include page="/templates/editProductModal.jsp" />
+      <jsp:include page="/templates/addProductModal.jsp" />
+    </c:if>
+    <script src="scripts/images.js" defer></script>
+  </body>
 </html>

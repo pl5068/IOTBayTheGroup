@@ -6,6 +6,8 @@ com\iotbay\controller\user_register_admin.class
 com\iotbay\dao\DB.class
 com\iotbay\iotbaydemo\User.class
 com\iotbay\iotbaydemo\JakartaRestConfiguration.class
+com\iotbay\controller\user_edit.class
+com\iotbay\controller\user_delete.class
 com\iotbay\dao\DBManager.class
 com\iotbay\controller\user_logout.class
 com\iotbay\controller\user_login.class

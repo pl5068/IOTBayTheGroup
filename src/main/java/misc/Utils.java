@@ -21,8 +21,6 @@ public class Utils {
     public static Timestamp getLocalTimestamp() {
         //ZoneId aes = ZoneId.systemDefault();
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());  
-        System.out.println("Timestamp : " + timestamp);  
-        
         return timestamp;
     }
     

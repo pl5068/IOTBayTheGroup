@@ -5,7 +5,7 @@
 <nav class="flex items-center justify-center p-4 px-6">
   <div class="flex w-full items-center">
     <div class="flex justify-start">
-      <a class="flex items-center gap-2 rounded-full text-gray-900" href="/">
+      <a class="flex items-center gap-2 rounded-full text-gray-900" href="catalogue_view">
         <div class="flex items-center justify-center">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -25,10 +25,6 @@
         <span class="font-serif text-base font-semibold italic">IoTBay</span>
       </a>
       <div class="ml-4 flex items-center gap-4 text-gray-600">
-        <div class="h-4/5 w-px bg-gray-300"></div>
-        <a class="text-sm" href="/catalogue_view">Home</a>
-        <a class="text-sm <%= request.getRequestURI().endsWith("catalogue.jsp") ? "font-semibold text-gray-900" : "" %>" href="/catalogue_view">Products</a>
-        <a class="text-sm" href="/catalogue_view">Orders</a>
       </div>
     </div>
     <div class="flex w-full justify-center"></div>

@@ -4,7 +4,7 @@
 <html>
   <head>
     <jsp:include page="/templates/common.jsp" />
-    <title>JSP Page</title>
+    <title>IoTBay | Catalogue</title>
   </head>
   <body>
     <c:set var="isAdmin" value="true" />

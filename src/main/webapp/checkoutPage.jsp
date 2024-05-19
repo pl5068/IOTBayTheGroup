@@ -1,4 +1,7 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="com.iotbay.iotbaydemo.Product" %>
+<%@ page import="java.util.List" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -15,36 +18,30 @@
                     <form action="add_delivery_info" method="post" class="delivery-box">
                         <label class="delivery-input">
                             <div class="text-field-label">First Name</div>
-                            <input name="first" type="text" class="text-field large" placeholder="First Name" required />
+                            <input name="first" type="text" class="text-field large" maxlength="24" placeholder="First Name" required />
                         </label>
                         <label class="delivery-input">
                             <div class="text-field-label">Last Name</div>
-                            <input name="surname" type="text" class="text-field large" placeholder="Last Name" required />
+                            <input name="surname" type="text" class="text-field large" maxlength="24" placeholder="Last Name" required />
                         </label>
                         <label class="delivery-input">
                             <div class="text-field-label">Street</div>
-                            <input name="street" type="text" class="text-field large" placeholder="Street" required />
+                            <input name="street" type="text" class="text-field large" maxlength="60" placeholder="Street" required />
                         </label>
                         <label class="delivery-input">
                             <div class="text-field-label">City</div>
-                            <input name="city" type="text" class="text-field large" placeholder="City" required />
+                            <input name="city" type="text" class="text-field large" maxlength="24" placeholder="City" required />
                         </label>
                         <label class="delivery-input">
                             <div class="text-field-label">State</div>
-                            <input name="state" type="text" class="text-field large" placeholder="State" required />
+                            <input name="state" type="text" class="text-field large" maxlength="24" placeholder="State" required />
                         </label>
                         <label class="delivery-input">
                             <div class="text-field-label">Postcode</div>
-                            <input name="postcode" type="text" class="text-field postcode" placeholder="Postcode" required />
+                            <input name="postcode" type="text" class="text-field postcode" maxlength="4" placeholder="Postcode" required />
                         </label>
                         <button type="submit" style="width: 100%" class="button primary payment">Continue to Payment</button>
                         <input type="hidden" value="yes" name="submitted">       
-                        <%
-                            String regFailed = request.getParameter("submitted");
-                            if (regFailed != null && regFailed.equals("yes")) {
-                        %>
-                        <p id="error">Please fill out all fields before continuing to payment</p>
-                        <% }%>
                     </form>
                 </div>
             </div>
@@ -52,17 +49,17 @@
                 <h1 class="order-header">Cart</h1>
                 <div class="order-box">
                     <table class="order-table" id="order_table">
-                        <tr>
-                            <td>Minion Router (Large)</td>
-                            <td>$100</td>
-                        </tr>
-                        <tr>
-                            <td>100m Ethernet Wire</td>
-                            <td>$5</td>
-                        </tr>
+                        <tbody>
+                            <c:forEach var="item" items="${cartItems}" >
+                                <tr>
+                                    <td> <c:out value="${item.name}"/></td>
+                                    <td> <c:out value="${item.unitPrice}"/></td>
+                                </tr>
+                            </c:forEach>
+                        </tbody>
                     </table>
-                    <p class="shipping_cost">Shipping: $15</p>
-                    <p id="total_price" class="order_total">Total: $0.00</p>
+                    <p class="shipping_cost"><strong>Shipping</strong> - $12</p>
+                    <p id="total_price" class="order_total"><strong>Total</strong> - $0.00</p>
                 </div>
                 <script>
                     function calcTotal() {
@@ -72,14 +69,14 @@
 
                         for (var i = 0; i < rows.length; i++) {
                             var cells = rows[i].getElementsByTagName("td");
-                            if (cells.length === 2) {
+                            if (cells.length > 1) {
                                 var price = parseFloat(cells[1].innerText.replace('$', ''));
                                 total += price;
                             }
                         }
 
-                        total += parseFloat(document.querySelector(".shipping_cost").innerText.replace('Shipping: $', ''));
-                        document.getElementById("total_price").innerText = "Total: $" + total.toFixed(2);
+                        total += parseFloat(document.querySelector(".shipping_cost").innerText.replace('Shipping - $', ''));
+                        document.getElementById("total_price").innerText = "Total - $" + total.toFixed(2);
                     }
 
                     calcTotal();

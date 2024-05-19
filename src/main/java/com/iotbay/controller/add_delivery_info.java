@@ -20,9 +20,7 @@ public class add_delivery_info extends HttpServlet {
             throws ServletException, IOException {
         try {
             DBConnector connector = new DBConnector();
-
             Connection conn = connector.openConnection();
-
             DBManager db = new DBManager(conn);
 
             String first = request.getParameter("first");
@@ -32,17 +30,14 @@ public class add_delivery_info extends HttpServlet {
             String state = request.getParameter("state");
             String postcode = request.getParameter("postcode");
             
-            db.addDeliveryInfo(first, surname, street, city, state, postcode);
+            if (first != null && surname != null && street != null && city != null && state != null && postcode != null) {
+                db.addDeliveryInfo(first, surname, street, city, state, postcode);
+            }
             
-            request.getRequestDispatcher("checkoutPage.jsp").forward(request,response);
-            
+            request.getRequestDispatcher("checkoutPage.jsp").forward(request, response);
             conn.close();
         } catch (ClassNotFoundException | SQLException ex) {
-
-            Logger.getLogger(TestDB.class.getName()).log(Level.SEVERE, null, ex);
-
+            Logger.getLogger(add_delivery_info.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
-
 }

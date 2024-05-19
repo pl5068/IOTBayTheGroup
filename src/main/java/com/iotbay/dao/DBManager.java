@@ -67,7 +67,7 @@ public class DBManager {
     }
     
     public void addDeliveryInfo(String first, String surname, String street, String city, String state, String postcode) throws SQLException {
-        st.executeUpdate("INSERT INTO 'iotbay-database'.order_history (first_name, last_name, street_address, city_address, state_address, postcode) values (first, surname, street, city, state, postcode)");
+        st.executeUpdate("INSERT INTO `iotbay-database`.order_history (first_name, last_name, street_address, city_address, state_address, postcode) values ('" + first + "', '" + surname + "', '" + street + "', '" + city + "', '" + state + "', '" + postcode + "')");
     }
 
 }

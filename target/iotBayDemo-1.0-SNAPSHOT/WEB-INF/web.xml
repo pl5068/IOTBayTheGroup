@@ -41,12 +41,12 @@
         <url-pattern>/user_edit</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>user_logs_view</servlet-name>
-        <url-pattern>/user_logs_view</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>user_delete</servlet-name>
         <url-pattern>/user_delete</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>user_logs_view</servlet-name>
+        <url-pattern>/user_logs_view</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

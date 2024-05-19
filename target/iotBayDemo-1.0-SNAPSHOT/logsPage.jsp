@@ -4,14 +4,16 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <jsp:include page="/templates/common.jsp" />
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>IOTBay | User Logs</title>
         <link href='styles/index.css' rel="stylesheet" type="text/css">
         <link href='styles/common.css' rel="stylesheet" type="text/css">
     </head>
     <body>
+        <jsp:include page="/templates/navbar.jsp" />
         <div class="tablecontainer">
-            <a href="profilePage.jsp">Go back</a>
+            <a href="profilePage.jsp" class="hyperlink" >Go back</a>
             <table class="fancy-table">
                 <tr>
                     <th>Action</th>

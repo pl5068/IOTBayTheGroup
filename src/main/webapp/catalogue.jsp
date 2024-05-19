@@ -7,7 +7,7 @@
     <title>IoTBay | Catalogue</title>
   </head>
   <body>
-    <c:set var="isAdmin" value="true" />
+    <c:set var="isAdmin" value="${user.userRole == 'admin'}" />
 
     <c:if test="${not empty sessionScope.errorMessage}">
       <jsp:include page="/templates/toast.jsp">

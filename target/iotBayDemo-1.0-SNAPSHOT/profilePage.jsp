@@ -5,6 +5,7 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <jsp:include page="/templates/common.jsp" /><jsp:include page="/templates/common.jsp" />
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>IOTBay | User</title>
         <link href='styles/index.css' rel="stylesheet" type="text/css">
@@ -14,6 +15,7 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     </head>
     <body style="background: var(--accent-2)">
+        <jsp:include page="/templates/navbar.jsp" />
         <c:set var = "edit" scope = "page" value = "${requestScope.edit}"/>
         <div style="min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center">
             <div class="auth-box" style="position: relative;">
@@ -45,11 +47,11 @@
                         <p>Phone: <b><jsp:getProperty name = "user" property = "phoneNumber"/></b></p>
                         <p>DOB: <b><jsp:getProperty name = "user" property = "dob"/></b></p>
                         <p>Thanks for being a customer of IOTBay!</p>
-                        <a href="user_logs_view" >My Access Logs</a>
+                        <a href="user_logs_view" class="hyperlink" >My Access Logs</a>
                     </c:otherwise>
                 </c:choose>
             </div>
-            <a href="user_logout">Sign out</a>
+                <a href="user_logout" class="hyperlink" >Sign out</a> <c:if test="${user.userRole == 'admin'}"><a href="user_list_admin" class="hyperlink" >Manage users</a></c:if>
             <form action="user_delete" method="post" class="auth-box" style=" padding: 0; position: absolute; bottom: 0px;">
                 <button type="submit" value="<c:out value="${param.delete == 'showconf' ? 'no' : 'showconf'}"/>" name="delete" style="width: 100%" class="button primary large">Delete account</button>
                 <input type="hidden" value="<%= ((User) request.getSession().getAttribute("user")).getId()%>" name="id">       

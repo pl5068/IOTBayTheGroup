@@ -4,11 +4,13 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <jsp:include page="/templates/common.jsp" />
         <title>Admin Page | IOTBay</title>
         <link href="styles/ben.css" rel="stylesheet" type="text/css" />
     </head>
     <body>
-        <h1>Welcome, <jsp:getProperty name="user" property="firstName"/>!</h1>
+        <jsp:include page="/templates/navbar.jsp" />
+        <h1>Welcome to User Management, <jsp:getProperty name="user" property="firstName"/>!</h1>
 
         <div class="search-container">
             <input type="text" id="searchInput" placeholder="Search by First Name, Last Name, or Phone Number">

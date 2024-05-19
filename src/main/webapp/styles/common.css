@@ -1,3 +1,9 @@
+.hyperlink {
+    color: #0000EE  !IMPORTANT;
+    text-decoration: underline  !IMPORTANT;       
+}
+
+
 :root {
     --radius: 5px;
   

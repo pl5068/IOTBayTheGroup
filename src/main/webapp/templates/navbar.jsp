@@ -33,7 +33,8 @@
     </div>
     <div class="flex w-full justify-center"></div>
     <div class="flex justify-end gap-2">
-      <button
+      <a href="profilePage.jsp">
+        <button
         class="flex flex-shrink-0 items-center justify-center gap-2 rounded-full bg-white px-3 py-2 text-sm font-semibold text-gray-900 hover:bg-gray-50"
         type="button"
       >
@@ -62,7 +63,8 @@
           <path d="m16.9 15.2-.4-.9" />
         </svg>
         <span>Account</span>
-      </button>
+        </button>
+      </a>
       <button
         class="flex flex-shrink-0 items-center justify-center gap-2 rounded-full bg-white px-3 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
         type="button"

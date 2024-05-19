@@ -32,7 +32,7 @@ public class user_register_admin extends HttpServlet {
             String phoneNumber = request.getParameter("phoneNumber");
 
             if (email != null && password != null && firstName != null && lastName != null && dob != null && phoneNumber != null) {
-                db.addUser(email, firstName, lastName, password, dob, phoneNumber);
+                db.addUser(email, firstName, lastName, password, dob, phoneNumber, "customer");
             }
 
             conn.close();

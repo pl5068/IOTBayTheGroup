@@ -106,7 +106,8 @@ public class DBManager {
             String password = rs.getString("password");
             String dob = rs.getString("dob");
             String phoneNumber = rs.getString("phoneNumber");
-            users.add(new User(id, email, firstName, lastName, password, dob, phoneNumber));
+            String userRole = rs.getString("userRole");
+            users.add(new User(id, email, firstName, lastName, password, dob, phoneNumber, userRole));
         }
         return users;
     }

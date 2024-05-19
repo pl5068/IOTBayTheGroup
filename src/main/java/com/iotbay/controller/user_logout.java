@@ -30,6 +30,7 @@ public class user_logout extends HttpServlet {
             response.sendRedirect("logoutPage.jsp");
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(TestDB.class.getName()).log(Level.SEVERE, null, ex);
+            response.sendRedirect("sqlError.html");
         }
     }
 

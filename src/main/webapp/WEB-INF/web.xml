@@ -12,6 +12,18 @@
         <servlet-name>user_register</servlet-name>
         <servlet-class>com.iotbay.controller.user_register</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>user_edit</servlet-name>
+        <servlet-class>com.iotbay.controller.user_edit</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>user_logs_view</servlet-name>
+        <servlet-class>com.iotbay.controller.user_logs_view</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>user_delete</servlet-name>
+        <servlet-class>com.iotbay.controller.user_delete</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>user_login</servlet-name>
         <url-pattern>/user_login</url-pattern>
@@ -58,6 +70,18 @@
         <url-pattern>/catalogue_edit</url-pattern>
     </servlet-mapping>
 
+    <servlet-mapping>
+        <servlet-name>user_edit</servlet-name>
+        <url-pattern>/user_edit</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>user_delete</servlet-name>
+        <url-pattern>/user_delete</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>user_logs_view</servlet-name>
+        <url-pattern>/user_logs_view</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30

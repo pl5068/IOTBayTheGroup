@@ -190,3 +190,58 @@ body {
     display: block;
     margin: 24px 0;
 }
+
+body {
+  margin: 16px;
+  font-family: system-ui;
+}
+
+.tablecontainer {
+    max-width: 800px;
+    align: center;
+    margin: 1rem auto;
+}
+
+.fancy-table {
+  text-indent: 0;
+  border-color: inherit;
+  border-collapse: collapse;
+  font-size: 14px;
+  min-width: 800px;
+}
+ 
+.fancy-table th {
+  font-size: 12px;
+  text-transform: uppercase;
+  opacity: .7;
+  height: 40px;
+  padding: 0 8px;
+  text-align: left;
+}
+ 
+.fancy-table tr {
+  background-color: #fff;
+}
+ 
+.fancy-table tbody tr:nth-child(odd) {
+  background-color: hsl(0, 0%, 97%);
+}
+ 
+.fancy-table tbody tr:hover {
+  background-color: hsl(0, 0%, 92%);
+}
+ 
+.fancy-table tbody td {
+  vertical-align: middle;
+  padding: 10px 8px;
+}
+ 
+.fancy-table tbody td:first-child {
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+}
+ 
+.fancy-table tbody td:last-child {
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+}

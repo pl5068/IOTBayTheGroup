@@ -26,6 +26,7 @@
                         if (loginFailed != null && loginFailed.equals("yes")) {
                     %>
                     <p id="error">Invalid login. Please try again</p>
+                    
                     <% }%>
 
                 </form>

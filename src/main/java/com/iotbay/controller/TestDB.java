@@ -37,7 +37,6 @@ public class TestDB {
 
             String dob = in.nextLine();
 
-            //db.addUser(id, email, firstName, password, dob);
 
             System.out.println("User is added to the database.");
 

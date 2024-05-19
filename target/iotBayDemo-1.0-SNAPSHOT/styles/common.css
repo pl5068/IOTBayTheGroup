@@ -202,7 +202,7 @@ body {
 
 .delivery-info, .order-info {
     width: 45%;
-    margin-top: 5vh; / Ensure both boxes have the same top margin /
+    margin-top: 5vh;
 }
 
 .delivery-content {

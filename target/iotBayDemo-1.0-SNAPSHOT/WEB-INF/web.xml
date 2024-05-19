@@ -63,17 +63,6 @@
     <servlet-mapping>
         <servlet-name>user_register</servlet-name>
         <url-pattern>/user_register</url-pattern>
-        
-    </servlet-mapping>
-    
-    <servlet-mapping>
-        <servlet-name>Cart</servlet-name>
-        <url-pattern>/Cart</url-pattern>
-        
-    </servlet-mapping>
-     <servlet-mapping>
-        <servlet-name>order_add</servlet-name>
-        <url-pattern>/order_add</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>user_register_admin</servlet-name>

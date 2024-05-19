@@ -2,8 +2,6 @@ package com.iotbay.dao;
 
 import com.iotbay.iotbaydemo.User;
 import java.sql.*;
-import java.sql.Timestamp;
-import java.util.Date;
 import misc.Utils;
 
 public class DBManager {
@@ -65,9 +63,41 @@ public class DBManager {
         //code for delete-operation   
 
     }
-    
+
     public void addDeliveryInfo(String first, String surname, String street, String city, String state, String postcode) throws SQLException {
         st.executeUpdate("INSERT INTO `iotbay-database`.order_history (first_name, last_name, street_address, city_address, state_address, postcode) values ('" + first + "', '" + surname + "', '" + street + "', '" + city + "', '" + state + "', '" + postcode + "')");
     }
+    
+    public void retrieveItem(int productId, int quantity) throws SQLException {
+    
+    String get = "SELECT * FROM `iotbay-database`.products WHERE productId = " + productId + " AND quantity = " + quantity;
+        
+            ResultSet rs = st.executeQuery(get);
+        
+        
+    }
+ 
+    public void makeOrder(int customer_id, int product_id, double price, String street_address, String city_address, String state, String postcode
+    ) throws SQLException {
+        // Convert LocalDateTime to string representation
+        String timestamp = Utils.getLocalTimestamp().toString();
 
-}
+        // Insert order into order history directly using the provided SQL statement
+    st.executeUpdate("INSERT INTO `iotbay-database`.order_history (customer_id, product_id, price, ordertime, first_name,"
+            + " last_name, street_address, city_address, state, postcode) " +
+        "VALUES (" + customer_id + ", " + product_id + ", (SELECT unitPrice FROM `iotbay-database`.products WHERE productId ="
+                + " " + product_id + "), '" + timestamp + "', (SELECT firstName FROM `iotbay-database`.users WHERE id = "
+            + "" + customer_id + "), (SELECT lastName FROM `iotbay-database`.users WHERE id = "
+            + "" + customer_id + "), '" + street_address + "', '" + city_address + "', '" + state + "', '" + postcode + "')");
+    }
+    
+    
+    
+        }
+
+
+
+
+      
+
+

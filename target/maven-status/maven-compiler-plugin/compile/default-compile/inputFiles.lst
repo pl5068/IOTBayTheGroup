@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /Users/dom/NetBeansProjects/IOTBayTheGroup/src/main/java/com/iotbay/controller/user_register.java
 /Users/dom/NetBeansProjects/IOTBayTheGroup/src/main/java/com/iotbay/dao/DB.java
 /Users/dom/NetBeansProjects/IOTBayTheGroup/src/main/java/misc/Utils.java
@@ -10,3 +11,22 @@
 /Users/dom/NetBeansProjects/IOTBayTheGroup/src/main/java/com/iotbay/dao/DBManager.java
 /Users/dom/NetBeansProjects/IOTBayTheGroup/src/main/java/com/iotbay/iotbaydemo/JakartaRestConfiguration.java
 /Users/dom/NetBeansProjects/IOTBayTheGroup/src/main/java/com/iotbay/controller/TestDB.java
+=======
+/Users/jreeve/NetBeansProjects/IOTBayTheGroup/src/main/java/com/iotbay/iotbaydemo/Product.java
+/Users/jreeve/NetBeansProjects/IOTBayTheGroup/src/main/java/com/iotbay/iotbaydemo/JakartaRestConfiguration.java
+/Users/jreeve/NetBeansProjects/IOTBayTheGroup/src/main/java/com/iotbay/controller/catalogue_delete.java
+/Users/jreeve/NetBeansProjects/IOTBayTheGroup/src/main/java/com/iotbay/dao/Products.java
+/Users/jreeve/NetBeansProjects/IOTBayTheGroup/src/main/java/misc/Utils.java
+/Users/jreeve/NetBeansProjects/IOTBayTheGroup/src/main/java/com/iotbay/dao/DBManager.java
+/Users/jreeve/NetBeansProjects/IOTBayTheGroup/src/main/java/com/iotbay/controller/catalogue_view.java
+/Users/jreeve/NetBeansProjects/IOTBayTheGroup/src/main/java/com/iotbay/controller/user_register.java
+/Users/jreeve/NetBeansProjects/IOTBayTheGroup/src/main/java/com/iotbay/controller/user_logout.java
+/Users/jreeve/NetBeansProjects/IOTBayTheGroup/src/main/java/com/iotbay/dao/DBConnector.java
+/Users/jreeve/NetBeansProjects/IOTBayTheGroup/src/main/java/com/iotbay/dao/DB.java
+/Users/jreeve/NetBeansProjects/IOTBayTheGroup/src/main/java/com/iotbay/iotbaydemo/User.java
+/Users/jreeve/NetBeansProjects/IOTBayTheGroup/src/main/java/com/iotbay/controller/TestDB.java
+/Users/jreeve/NetBeansProjects/IOTBayTheGroup/src/main/java/com/iotbay/controller/catalogue_add.java
+/Users/jreeve/NetBeansProjects/IOTBayTheGroup/src/main/java/com/iotbay/controller/Cart.java
+/Users/jreeve/NetBeansProjects/IOTBayTheGroup/src/main/java/com/iotbay/controller/catalogue_edit.java
+/Users/jreeve/NetBeansProjects/IOTBayTheGroup/src/main/java/com/iotbay/controller/user_login.java
+>>>>>>> 62e93d0bbc8ae61b0d31dff152406d798967964f

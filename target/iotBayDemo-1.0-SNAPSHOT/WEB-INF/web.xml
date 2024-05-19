@@ -13,6 +13,10 @@
         <servlet-class>com.iotbay.controller.user_register</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>Cart</servlet-name>
+        <servlet-class>com.iotbay.controller.Cart</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>add_delivery_info</servlet-name>
         <servlet-class>com.iotbay.controller.add_delivery_info</servlet-class>
     </servlet>
@@ -26,7 +30,46 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>user_register</servlet-name>
-        <url-pattern>/user_register</url-pattern>
+        <url-pattern>/user_register</url-pattern>        
+    </servlet-mapping>
+    
+    <servlet-mapping>
+        <servlet-name>Cart</servlet-name>
+        <url-pattern>/Cart</url-pattern>
+        
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>catalogue_view</servlet-name>
+        <servlet-class>com.iotbay.controller.catalogue_view</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>catalogue_view</servlet-name>
+        <url-pattern>/catalogue_view</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>catalogue_add</servlet-name>
+        <servlet-class>com.iotbay.controller.catalogue_add</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>catalogue_add</servlet-name>
+        <url-pattern>/catalogue_add</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>catalogue_delete</servlet-name>
+        <servlet-class>com.iotbay.controller.catalogue_delete</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>catalogue_delete</servlet-name>
+        <url-pattern>/catalogue_delete</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>catalogue_edit</servlet-name>
+        <servlet-class>com.iotbay.controller.catalogue_edit</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>catalogue_edit</servlet-name>
+        <url-pattern>/catalogue_edit</url-pattern>
     </servlet-mapping>
         <servlet-mapping>
         <servlet-name>add_delivery_info</servlet-name>

@@ -4,12 +4,10 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <jsp:include page="/templates/common.jsp" />
         <title>Admin Page | IOTBay</title>
         <link href="styles/ben.css" rel="stylesheet" type="text/css" />
     </head>
     <body>
-        <jsp:include page="/templates/navbar.jsp" />
         <h1>Welcome to User Management, <jsp:getProperty name="user" property="firstName"/>!</h1>
 
         <div class="search-container">

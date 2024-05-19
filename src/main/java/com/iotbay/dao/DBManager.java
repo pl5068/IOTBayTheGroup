@@ -3,11 +3,12 @@ package com.iotbay.dao;
 import com.iotbay.iotbaydemo.User;
 import com.iotbay.iotbaydemo.UserLogs;
 import java.sql.*;
-import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import misc.Utils;
+import java.util.ArrayList;
+import java.util.List;
 
 public class DBManager {
 
@@ -22,6 +23,7 @@ public class DBManager {
         String fetch = "select * from `iotbay-database`.users where EMAIL = '" + email + "' and PASSWORD='" + password + "'";
         ResultSet rs = st.executeQuery(fetch);
 
+
         while (rs.next()) {
             String userEmail = rs.getString(2);
             String userPassword = rs.getString(5);
@@ -35,6 +37,7 @@ public class DBManager {
                 return new User(userId, userEmail, userFirstName, userLastName, userPassword, userDOB, userPhoneNumber, userRole);
             }
         }
+
 
         return null;
     }
@@ -55,8 +58,6 @@ public class DBManager {
         int uid = rs.getInt(1);
         String q = "insert into `iotbay-database`.access_log (userid, log_action, time_operation) values ('" + uid + "','regUser', NOW()) ;";
         st.executeUpdate(q);
-        System.out.println("hello");
-        System.out.println(findUser(email, password));
         return findUser(email, password);
     }
 
@@ -91,5 +92,23 @@ public class DBManager {
         }
         
         return logs;
+    }
+
+    public List<User> getAllUsers() throws SQLException {
+        List<User> users = new ArrayList<>();
+        String query = "SELECT * FROM `iotbay-database`.users";
+        ResultSet rs = st.executeQuery(query);
+        while (rs.next()) {
+            int id = rs.getInt("id");
+            String email = rs.getString("email");
+            String firstName = rs.getString("firstName");
+            String lastName = rs.getString("lastName");
+            String password = rs.getString("password");
+            String dob = rs.getString("dob");
+            String phoneNumber = rs.getString("phoneNumber");
+            String userRole = rs.getString("userRole");
+            users.add(new User(id, email, firstName, lastName, password, dob, phoneNumber, userRole));
+        }
+        return users;
     }
 }

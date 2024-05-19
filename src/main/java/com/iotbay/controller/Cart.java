@@ -2,8 +2,8 @@ package com.iotbay.controller;
 
 import com.iotbay.dao.DBConnector;
 import com.iotbay.dao.DBManager;
-import com.iotbay.iotbaydemo.User;
-
+import com.iotbay.dao.Products;
+import com.iotbay.iotbaydemo.Product;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -14,33 +14,21 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Cart extends HttpServlet {
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        
-        
         System.out.print("Hello");
         // Retrieve form data
-        int productId = Integer.parseInt(request.getParameter("productId"));
-        double price = Double.parseDouble(request.getParameter("price"));
 
         request.setCharacterEncoding("UTF-8");
 
         HttpSession session = request.getSession();
-
-        User user = (User) session.getAttribute("user");
-
-        int customerId = user.getId();
-
-        // Retrieve form data
-        String street = request.getParameter("street");
-        String city = request.getParameter("city");
-        String state = request.getParameter("state");
-        String postcode = request.getParameter("postcode");
 
         try {
             DBConnector connector = new DBConnector();
@@ -48,12 +36,23 @@ public class Cart extends HttpServlet {
             Connection conn = connector.openConnection();
 
             DBManager db = new DBManager(conn);
-
-            // Get customer id from session
-            db.makeOrder(customerId, productId, price, street, city, state, postcode);
-
-            request.getRequestDispatcher("checkoutPage.jsp").forward(request, response);
+            Products product = new Products(conn);
+            int orderId = db.getOrderId();
+            
+           
+           List<Product> products;
+                    
+                   
+               
+            products = db.orderLines(orderId) ;
+            
+             request.setAttribute("cartItems", products);
+         /*
+            request.setAttribute("attributeName", attributeObject);   */
+            request.getRequestDispatcher("cart.jsp").forward(request, response);
             conn.close();
+            // Get customer id from session
+            /*  db.makeOrder(customerId, productId, price, street, city, state, postcode);*/
 
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(Cart.class.getName()).log(Level.SEVERE, null, ex);

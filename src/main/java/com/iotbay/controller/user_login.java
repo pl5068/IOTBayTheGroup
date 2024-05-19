@@ -29,6 +29,8 @@ public class user_login extends HttpServlet {
             String email = request.getParameter("email");
             String password = request.getParameter("password");
             
+            
+            
             User user = db.findUser(email, password);
             HttpSession session = request.getSession();
 
@@ -37,7 +39,7 @@ public class user_login extends HttpServlet {
                 
                 session.setAttribute("user", user);
                 db.logInTimestamp(user.getId());
-                response.sendRedirect("checkoutPage.jsp");
+                response.sendRedirect("catalogue.jsp");
                 conn.close();
                 return;
             }

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /Users/dom/NetBeansProjects/IOTBayTheGroup/src/main/java/com/iotbay/controller/catalogue_delete.java
 /Users/dom/NetBeansProjects/IOTBayTheGroup/src/main/java/com/iotbay/dao/DB.java
 /Users/dom/NetBeansProjects/IOTBayTheGroup/src/main/java/com/iotbay/controller/user_login.java
@@ -17,3 +18,30 @@
 /Users/dom/NetBeansProjects/IOTBayTheGroup/src/main/java/com/iotbay/controller/TestDB.java
 /Users/dom/NetBeansProjects/IOTBayTheGroup/src/main/java/com/iotbay/controller/Cart.java
 /Users/dom/NetBeansProjects/IOTBayTheGroup/src/main/java/com/iotbay/controller/catalogue_view.java
+=======
+C:\Users\User\Documents\IOTBayTheGroup\src\main\java\com\iotbay\controller\catalogue_add.java
+C:\Users\User\Documents\IOTBayTheGroup\src\main\java\com\iotbay\controller\user_login.java
+C:\Users\User\Documents\IOTBayTheGroup\src\main\java\com\iotbay\controller\user_logout.java
+C:\Users\User\Documents\IOTBayTheGroup\src\main\java\com\iotbay\controller\catalogue_edit.java
+C:\Users\User\Documents\IOTBayTheGroup\src\main\java\com\iotbay\controller\TestDB.java
+C:\Users\User\Documents\IOTBayTheGroup\src\main\java\com\iotbay\controller\user_edit_admin.java
+C:\Users\User\Documents\IOTBayTheGroup\src\main\java\com\iotbay\controller\user_delete.java
+C:\Users\User\Documents\IOTBayTheGroup\src\main\java\misc\Utils.java
+C:\Users\User\Documents\IOTBayTheGroup\src\main\java\com\iotbay\dao\DB.java
+C:\Users\User\Documents\IOTBayTheGroup\src\main\java\com\iotbay\controller\catalogue_view.java
+C:\Users\User\Documents\IOTBayTheGroup\src\main\java\com\iotbay\iotbaydemo\User.java
+C:\Users\User\Documents\IOTBayTheGroup\src\main\java\com\iotbay\controller\user_list_admin.java
+C:\Users\User\Documents\IOTBayTheGroup\src\main\java\com\iotbay\controller\user_register.java
+C:\Users\User\Documents\IOTBayTheGroup\src\main\java\com\iotbay\controller\user_edit.java
+C:\Users\User\Documents\IOTBayTheGroup\src\main\java\com\iotbay\iotbaydemo\UserLogs.java
+C:\Users\User\Documents\IOTBayTheGroup\src\main\java\com\iotbay\iotbaydemo\Product.java
+C:\Users\User\Documents\IOTBayTheGroup\src\main\java\com\iotbay\controller\InputValidator.java
+C:\Users\User\Documents\IOTBayTheGroup\src\main\java\com\iotbay\controller\user_logs_view.java
+C:\Users\User\Documents\IOTBayTheGroup\src\main\java\com\iotbay\iotbaydemo\JakartaRestConfiguration.java
+C:\Users\User\Documents\IOTBayTheGroup\src\main\java\com\iotbay\controller\user_delete_admin.java
+C:\Users\User\Documents\IOTBayTheGroup\src\main\java\com\iotbay\dao\DBManager.java
+C:\Users\User\Documents\IOTBayTheGroup\src\main\java\com\iotbay\controller\user_register_admin.java
+C:\Users\User\Documents\IOTBayTheGroup\src\main\java\com\iotbay\controller\catalogue_delete.java
+C:\Users\User\Documents\IOTBayTheGroup\src\main\java\com\iotbay\dao\DBConnector.java
+C:\Users\User\Documents\IOTBayTheGroup\src\main\java\com\iotbay\dao\Products.java
+>>>>>>> f78743002207d9f63755be11b53d2e4f83e2fee7

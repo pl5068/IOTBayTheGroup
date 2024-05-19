@@ -20,6 +20,7 @@ public class user_login extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
+            
             DBConnector connector = new DBConnector();
 
             Connection conn = connector.openConnection();
@@ -35,11 +36,9 @@ public class user_login extends HttpServlet {
             HttpSession session = request.getSession();
 
             if (user != null) {
-                System.out.print("Login Found");
-                
                 session.setAttribute("user", user);
                 db.logInTimestamp(user.getId());
-                response.sendRedirect("welcomePage.jsp");
+                response.sendRedirect("catalogue_view");
                 conn.close();
                 return;
             }
@@ -49,7 +48,7 @@ public class user_login extends HttpServlet {
         } catch (ClassNotFoundException | SQLException ex) {
 
             Logger.getLogger(TestDB.class.getName()).log(Level.SEVERE, null, ex);
-
+            response.sendRedirect("sqlError.html");
         }
     }
 

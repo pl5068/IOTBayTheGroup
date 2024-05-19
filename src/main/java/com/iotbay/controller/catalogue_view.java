@@ -26,6 +26,7 @@ public class catalogue_view extends HttpServlet {
       Products db = new Products(conn);
 
       String search = request.getParameter("search");
+      String sort = request.getParameter("sort");
       String category = request.getParameter("category");
       Boolean inStock = request.getParameter("inStock") != null;
 
@@ -43,8 +44,26 @@ public class catalogue_view extends HttpServlet {
         products.removeIf(product -> product.getUnitStock() <= 0);
       }
 
+      if (sort != null && !sort.isEmpty()) {
+        switch (sort) {
+          case "name":
+            products.sort((a, b) -> a.getName().compareTo(b.getName()));
+            break;
+          case "price":
+            products.sort((a, b) -> Double.compare(a.getUnitPrice(), b.getUnitPrice()));
+            break;
+          case "price_desc":
+            products.sort((a, b) -> Double.compare(b.getUnitPrice(), a.getUnitPrice()));
+            break;
+        }
+      }
+
       request.setAttribute("products", products);
       request.setAttribute("categories", db.getCategories());
+      request.setAttribute("search", search);
+      request.setAttribute("sort", sort);
+      request.setAttribute("category", category);
+      request.setAttribute("inStock", inStock);
     } catch (ClassNotFoundException | SQLException ex) {
       Logger.getLogger(TestDB.class.getName()).log(Level.SEVERE, null, ex);
     } finally {

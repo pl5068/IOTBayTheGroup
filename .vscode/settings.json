@@ -1,7 +1,12 @@
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
     "java.configuration.updateBuildConfiguration": "interactive"
 =======
     "java.debug.settings.onBuildFailureProceed": true
 >>>>>>> 87ef042166708451b07761538d7547f689d3995d
+=======
+    "java.debug.settings.onBuildFailureProceed": true,
+    "java.configuration.updateBuildConfiguration": "disabled"
+>>>>>>> f78743002207d9f63755be11b53d2e4f83e2fee7
 }

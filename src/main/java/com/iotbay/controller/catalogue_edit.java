@@ -27,11 +27,23 @@ public class catalogue_edit extends HttpServlet {
       int id = Integer.parseInt(request.getParameter("id"));
       String name = request.getParameter("name");
       String description = request.getParameter("description");
-      double unitPrice = Double.parseDouble(request.getParameter("price"));
-      int unitStock = Integer.parseInt(request.getParameter("stock"));
+      String unitPrice = request.getParameter("price");
+      String unitStock = request.getParameter("stock");
       String category = request.getParameter("category");
 
-      db.update(id, name, description, unitPrice, unitStock, category);
+      InputValidator validator = new InputValidator();
+
+      validator.isPriceValid(unitPrice)
+        .isProductNameValid(name)
+        .isStockValid(unitStock);
+
+      if (validator.isValid()) {
+        db.update(id, name, description, Double.parseDouble(unitPrice), Integer.parseInt(unitStock), category);
+      } else {
+        // this is immediately cleaned up in catalogue.jsp
+        HttpSession session = request.getSession();
+        session.setAttribute("errorMessage", validator.getErrorMessage());
+      }
     } catch (ClassNotFoundException | SQLException ex) {
       Logger.getLogger(TestDB.class.getName()).log(Level.SEVERE, null, ex);
     } finally {

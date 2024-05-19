@@ -6,6 +6,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>IOTBay | Log In</title>
         <link href='styles/common.css' rel="stylesheet" type="text/css">
+        <link rel="icon" type="image/x-icon" href="iotbay.ico">
     </head>
     <body style="background: var(--accent-2);">
         <jsp:include page="/templates/navbar.jsp" />

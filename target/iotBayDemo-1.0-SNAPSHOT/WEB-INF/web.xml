@@ -13,6 +13,18 @@
         <servlet-class>com.iotbay.controller.user_register</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>Cart</servlet-name>
+        <servlet-class>com.iotbay.controller.Cart</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>order_add</servlet-name>
+        <servlet-class>com.iotbay.controller.order_add</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>add_delivery_info</servlet-name>
+        <servlet-class>com.iotbay.controller.add_delivery_info</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>user_register_admin</servlet-name>
         <servlet-class>com.iotbay.controller.user_register_admin</servlet-class>
     </servlet>
@@ -51,6 +63,17 @@
     <servlet-mapping>
         <servlet-name>user_register</servlet-name>
         <url-pattern>/user_register</url-pattern>
+        
+    </servlet-mapping>
+    
+    <servlet-mapping>
+        <servlet-name>Cart</servlet-name>
+        <url-pattern>/Cart</url-pattern>
+        
+    </servlet-mapping>
+     <servlet-mapping>
+        <servlet-name>order_add</servlet-name>
+        <url-pattern>/order_add</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>user_register_admin</servlet-name>
@@ -101,7 +124,12 @@
         <servlet-name>catalogue_edit</servlet-name>
         <url-pattern>/catalogue_edit</url-pattern>
     </servlet-mapping>
+        <servlet-mapping>
+        <servlet-name>add_delivery_info</servlet-name>
+        <url-pattern>/add_delivery_info</url-pattern>
+    </servlet-mapping>
 
+    
     <servlet-mapping>
         <servlet-name>user_edit</servlet-name>
         <url-pattern>/user_edit</url-pattern>

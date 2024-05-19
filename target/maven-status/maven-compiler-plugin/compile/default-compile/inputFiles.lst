@@ -8,6 +8,8 @@ C:\Users\User\Documents\IOTBayTheGroup\src\main\java\com\iotbay\controller\user_
 C:\Users\User\Documents\IOTBayTheGroup\src\main\java\misc\Utils.java
 C:\Users\User\Documents\IOTBayTheGroup\src\main\java\com\iotbay\dao\DB.java
 C:\Users\User\Documents\IOTBayTheGroup\src\main\java\com\iotbay\controller\catalogue_view.java
+C:\Users\User\Documents\IOTBayTheGroup\src\main\java\com\iotbay\controller\Cart.java
+C:\Users\User\Documents\IOTBayTheGroup\src\main\java\com\iotbay\controller\order_add.java
 C:\Users\User\Documents\IOTBayTheGroup\src\main\java\com\iotbay\iotbaydemo\User.java
 C:\Users\User\Documents\IOTBayTheGroup\src\main\java\com\iotbay\controller\user_list_admin.java
 C:\Users\User\Documents\IOTBayTheGroup\src\main\java\com\iotbay\controller\user_register.java
@@ -16,6 +18,7 @@ C:\Users\User\Documents\IOTBayTheGroup\src\main\java\com\iotbay\iotbaydemo\UserL
 C:\Users\User\Documents\IOTBayTheGroup\src\main\java\com\iotbay\iotbaydemo\Product.java
 C:\Users\User\Documents\IOTBayTheGroup\src\main\java\com\iotbay\controller\InputValidator.java
 C:\Users\User\Documents\IOTBayTheGroup\src\main\java\com\iotbay\controller\user_logs_view.java
+C:\Users\User\Documents\IOTBayTheGroup\src\main\java\com\iotbay\controller\add_delivery_info.java
 C:\Users\User\Documents\IOTBayTheGroup\src\main\java\com\iotbay\iotbaydemo\JakartaRestConfiguration.java
 C:\Users\User\Documents\IOTBayTheGroup\src\main\java\com\iotbay\controller\user_delete_admin.java
 C:\Users\User\Documents\IOTBayTheGroup\src\main\java\com\iotbay\dao\DBManager.java

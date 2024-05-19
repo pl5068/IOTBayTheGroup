@@ -1,15 +1,13 @@
 package com.iotbay.iotbaydemo;
 
-import java.sql.Timestamp;
-
 public class UserLogs {
 
     private int logid;
     private int userid;
     private String logAction;
-    private Timestamp timeOperation;
+    private String timeOperation;
 
-    public UserLogs(int logid, int userid, String logAction, Timestamp timeOperation) {
+    public UserLogs(int logid, int userid, String logAction, String timeOperation) {
         this.logid = logid;
         this.userid = userid;
         this.logAction = logAction;
@@ -40,11 +38,11 @@ public class UserLogs {
         this.logAction = logAction;
     }
 
-    public Timestamp getTimeOperation() {
+    public String getTimeOperation() {
         return timeOperation;
     }
 
-    public void setTimeOperation(Timestamp timeOperation) {
+    public void setTimeOperation(String timeOperation) {
         this.timeOperation = timeOperation;
     }
 

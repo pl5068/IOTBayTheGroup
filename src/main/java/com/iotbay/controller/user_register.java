@@ -37,8 +37,7 @@ public class user_register extends HttpServlet {
             HttpSession session = request.getSession();
             if ( email != null && password != null && firstName != null && lastName != null && dob != null && phoneNumber != null) {
 
-                db.addUser(email, firstName, lastName, password, dob, phoneNumber, "customer");
-                User user = new User(email, firstName, lastName, password, dob, phoneNumber, "customer");
+                User user = db.addUser(email, firstName, lastName, password, dob, phoneNumber, "customer");
 
                 session.setAttribute("user", user);
                 response.sendRedirect("welcomePage.jsp");

@@ -5,20 +5,25 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>IOTBay | User Logs</title>
+        <link href='styles/index.css' rel="stylesheet" type="text/css">
+        <link href='styles/common.css' rel="stylesheet" type="text/css">
     </head>
     <body>
-        <table>
-            <tr>
-                <th>Action</th>
-                <th>Time</th>
-            </tr>
-            <c:forEach var="entry" items="${logEntries}">
+        <div class="tablecontainer">
+            <a href="profilePage.jsp">Go back</a>
+            <table class="fancy-table">
                 <tr>
-                    <td><c:out value="${entry.logAction}"/></td>
-                    <td><c:out value="${entry.timeOperation}"/></td>
+                    <th>Action</th>
+                    <th>Time</th>
                 </tr>
-            </c:forEach>
-        </table>
+                <c:forEach var="entry" items="${logEntries}">
+                    <tr>
+                        <td><c:out value="${entry.logAction}"/></td>
+                        <td><c:out value="${entry.timeOperation}"/></td>
+                    </tr>
+                </c:forEach>
+            </table>
+        </div>
     </body>
 </html>

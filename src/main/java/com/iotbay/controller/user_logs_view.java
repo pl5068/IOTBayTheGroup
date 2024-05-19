@@ -2,6 +2,7 @@ package com.iotbay.controller;
 
 import com.iotbay.dao.DBConnector;
 import com.iotbay.dao.DBManager;
+import com.iotbay.iotbaydemo.User;
 import com.iotbay.iotbaydemo.UserLogs;
 
 import java.io.IOException;
@@ -25,13 +26,16 @@ public class user_logs_view extends HttpServlet {
             DBConnector connector = new DBConnector();
             Connection conn = connector.openConnection();
             DBManager db = new DBManager(conn);
-
-            int uid = Integer.parseInt(request.getParameter("uid"));
+            HttpSession session = request.getSession();
+            int uid = ((User) session.getAttribute("user")).getId();
             
             logEntries = db.getLogs(uid);
             
+            System.out.println(((UserLogs) logEntries.get(0)).getLogAction());
+            
             request.setAttribute("logEntries", logEntries);
         } catch (ClassNotFoundException | SQLException ex) {
+            
             Logger.getLogger(TestDB.class.getName()).log(Level.SEVERE, null, ex);
             response.sendRedirect("sqlError.html");
         } finally {

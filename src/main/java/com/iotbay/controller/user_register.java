@@ -20,27 +20,27 @@ public class user_register extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
-            System.out.print("blerg");
             DBConnector connector = new DBConnector();
 
             Connection conn = connector.openConnection();
 
             DBManager db = new DBManager(conn);
             
-            System.out.print("blerg");
 
             String email = request.getParameter("email");
             String password = request.getParameter("password");
             String firstName = request.getParameter("firstName");
+            String lastName = request.getParameter("lastName");
             String dob = request.getParameter("dob");
+            String phoneNumber = request.getParameter("phoneNumber");
 
-            System.out.print(email + password + firstName + dob);
+            System.out.print(email + password + firstName + lastName + dob + phoneNumber);
             HttpSession session = request.getSession();
-            if (email != null && password != null && firstName != null && dob != null) {
+            if ( email != null && password != null && firstName != null && lastName != null && dob != null && phoneNumber != null) {
 
-                db.addUser(email, firstName, password, dob);
-                User user = new User(email, firstName, password, dob);
-                System.out.print(user.getEmail());
+                db.addUser(email, firstName, lastName, password, dob, phoneNumber, "customer");
+                User user = new User(email, firstName, lastName, password, dob, phoneNumber, "customer");
+
                 session.setAttribute("user", user);
                 response.sendRedirect("welcomePage.jsp");
                 conn.close();

@@ -15,7 +15,7 @@
                 <p>DOB: <b><jsp:getProperty name = "user" property = "dob"/></b></p>
                 <p>Thanks for being a customer of IOTBay!</p>
             </div>
-            <a href="logoutPage.jsp">Sign out</a>
+            <a href="user_logout">Sign out</a>
         </div>
     </body>
 </html>

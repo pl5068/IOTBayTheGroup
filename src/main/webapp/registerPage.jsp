@@ -24,8 +24,16 @@
                         <input name="firstName" type="text" class="text-field large" placeholder="Enter your first name" required />
                     </label>
                     <label class="auth-input">
+                        <div class="text-field-label">Last Name</div>
+                        <input name="lastName" type="text" class="text-field large" placeholder="Enter your surame" required />
+                    </label>
+                    <label class="auth-input">
                         <div class="text-field-label">Date of Birth</div>
                         <input name="dob" type="date" class="text-field large" placeholder="Enter DOB" required />
+                    </label>
+                    <label class="auth-input">
+                        <div class="text-field-label">Phone Number</div>
+                        <input name="phoneNumber" pattern="[0-9]+" class="text-field large" placeholder="Enter your phone number" required />
                     </label>
                     <button type="submit" style="width: 100%" class="button primary large">Register</button>
                     <input type="hidden" value="yes" name="submitted">       

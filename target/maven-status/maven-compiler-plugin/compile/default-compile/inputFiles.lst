@@ -2,6 +2,7 @@
 /Users/dom/NetBeansProjects/IOTBayTheGroup/src/main/java/com/iotbay/dao/DB.java
 /Users/dom/NetBeansProjects/IOTBayTheGroup/src/main/java/com/iotbay/controller/user_login.java
 /Users/dom/NetBeansProjects/IOTBayTheGroup/src/main/java/com/iotbay/controller/user_logout.java
+/Users/dom/NetBeansProjects/IOTBayTheGroup/src/main/java/com/iotbay/controller/add_delivery_info.java
 /Users/dom/NetBeansProjects/IOTBayTheGroup/src/main/java/com/iotbay/dao/DBConnector.java
 /Users/dom/NetBeansProjects/IOTBayTheGroup/src/main/java/com/iotbay/iotbaydemo/User.java
 /Users/dom/NetBeansProjects/IOTBayTheGroup/src/main/java/com/isdbay/iotbaydemo/resources/JakartaEE10Resource.java

@@ -3,16 +3,16 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>IOTBay - Checkout</title>
+        <title>IOTBay | Checkout</title>
         <link href='styles/common.css' rel="stylesheet" type="text/css">
         <link rel="icon" type="image/x-icon" href="iotbay.ico">
     </head>
-    <body style="background: var(--accent-2);">
+    <body>
         <div class="checkout-container">
             <div class="delivery-info">
                 <div class="delivery-content">
                     <h1>Delivery Information</h1>
-                    <form action="user_delivery_details" method="post" class="delivery-box">
+                    <form action="add_delivery_info" method="post" class="delivery-box">
                         <label class="delivery-input">
                             <div class="text-field-label">First Name</div>
                             <input name="first" type="text" class="text-field large" placeholder="First Name" required />
@@ -43,7 +43,7 @@
                             String regFailed = request.getParameter("submitted");
                             if (regFailed != null && regFailed.equals("yes")) {
                         %>
-                        <p id="error">Please fill out all fields before continuing to payment!</p>
+                        <p id="error">Please fill out all fields before continuing to payment</p>
                         <% }%>
                     </form>
                 </div>

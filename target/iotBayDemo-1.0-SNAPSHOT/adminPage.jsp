@@ -5,10 +5,12 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Admin Page | IOTBay</title>
+        <link rel="icon" type="image/x-icon" href="iotbay.ico">
         <link href="styles/ben.css" rel="stylesheet" type="text/css" />
     </head>
     <body>
-        <h1>Welcome, <jsp:getProperty name="user" property="firstName"/>!</h1>
+        <a href="profilePage.jsp" class="hyperlink">Back to Profile</a>
+        <h1>Welcome to User Management, <jsp:getProperty name="user" property="firstName"/>!</h1>
 
         <div class="search-container">
             <input type="text" id="searchInput" placeholder="Search by First Name, Last Name, or Phone Number">
@@ -21,35 +23,37 @@
                 <form action="user_register_admin" method="POST" class="auth-box">
                     <label class="auth-input">
                         <div class="text-field-label">Email:</div>
-                        <input name="email" type="email" class="text-field large" placeholder="Enter your email address" required />
+                        <input name="email" type="email" class="text-field large" placeholder="Enter an email address" required />
                     </label>
                     <label class="auth-input">
                         <div class="text-field-label">Password:</div>
-                        <input name="password" type="password" class="text-field large" placeholder="Enter your password" required />
+                        <input name="password" type="password" class="text-field large" placeholder="Enter a password" required />
                     </label>
                     <label class="auth-input">
                         <div class="text-field-label">First Name:</div>
-                        <input name="firstName" type="text" class="text-field large" placeholder="Enter your first name" required />
+                        <input name="firstName" type="text" class="text-field large" placeholder="Enter a first name" required />
                     </label>
                     <label class="auth-input">
                         <div class="text-field-label">Last Name:</div>
-                        <input name="lastName" type="text" class="text-field large" placeholder="Enter your surname" required />
+                        <input name="lastName" type="text" class="text-field large" placeholder="Enter a last name" required />
                     </label>
                     <label class="auth-input">
                         <div class="text-field-label">Date of Birth:</div>
-                        <input name="dob" type="date" class="text-field large" placeholder="Enter DOB" required />
+                        <input name="dob" type="date" class="text-field large" placeholder="Enter a DOB" required />
                     </label>
                     <label class="auth-input">
                         <div class="text-field-label">Phone Number:</div>
-                        <input name="phoneNumber" pattern="[0-9]+" class="text-field large" placeholder="Enter your phone number" required />
+                        <input name="phoneNumber" pattern="[0-9]+" class="text-field large" placeholder="Enter a phone number" required />
                     </label>
                     <div class="auth-input">
-                        <div class="text-field-label">User Type:</div>
+                        <div class="text-field-label">User Role:</div>
                         <div class="user-type">
-                            <input type="radio" id="staffRadio" name="userType" value="staff">
-                            <label for="staffRadio">Staff Member</label>
-                            <input type="radio" id="userRadio" name="userType" value="user" checked>
-                            <label for="userRadio">User</label>
+                            <input type="radio" id="userRadio" name="userRole" value="customer" checked>
+                            <label for="userRadio">Customer</label>
+                            <input type="radio" id="staffRadio" name="userRole" value="staff">
+                            <label for="staffRadio">Staff</label>
+                            <input type="radio" id="adminRadio" name="userRole" value="admin">
+                            <label for="userRadio">Admin</label>
                         </div>
                     </div>
                     <button type="submit" style="width: 100%" class="button">Register</button>
@@ -68,8 +72,35 @@
                         <input name="email" type="email" class="text-field large" placeholder="Enter your email address" required />
                     </label>
                     <label class="auth-input">
+                        <div class="text-field-label">Password:</div>
+                        <input name="password" type="text" class="text-field large" placeholder="Enter your password" required />
+                    </label>
+                    <label class="auth-input">
+                        <div class="text-field-label">First Name:</div>
+                        <input name="firstName" type="text" class="text-field large" placeholder="Enter your first name" required />
+                    </label>
+                    <label class="auth-input">
+                        <div class="text-field-label">Last Name:</div>
+                        <input name="lastName" type="text" class="text-field large" placeholder="Enter your last name" required />
+                    </label>
+                    <label class="auth-input">
+                        <div class="text-field-label">Date of Birth:</div>
+                        <input name="dob" type="Date" class="text-field large" placeholder="Enter your date of birth" required />
+                    </label>
+                    <label class="auth-input">
                         <div class="text-field-label">Phone Number:</div>
-                        <input name="phoneNumber" pattern="[0-9]+" class="text-field large" placeholder="Enter your phone number" required />
+                        <input name="phoneNumber" type="text" class="text-field large" placeholder="Enter your phone number" required />
+                    </label>
+                    <label class="auth-input">
+                        <div class="text-field-label">User Role:</div>
+                        <div class="user-type">
+                            <input type="radio" id="userRadio" name="userRole" value="customer" checked>
+                            <label for="userRadio">Customer</label>
+                            <input type="radio" id="staffRadio" name="userRole" value="staff">
+                            <label for="staffRadio">Staff</label>
+                            <input type="radio" id="adminRadio" name="userRole" value="admin">
+                            <label for="userRadio">Admin</label>
+                        </div>
                     </label>
                     <input type="hidden" name="id" id="editUserId" />
                     <button type="submit" style="width: 100%" class="button">Save Changes</button>
@@ -92,6 +123,7 @@
               <th>Email</th>
               <th>Date of Birth</th>
               <th>Password</th>
+              <th>Role</th>
               <th>Actions</th>
             </tr>
           </thead>
@@ -106,8 +138,9 @@
                   <td>${user.email}</td>
                   <td>${user.dob}</td>
                   <td>${user.password}</td>
+                  <td>${user.userRole}</td>
                   <td>
-                    <button onclick="editUser(${user.id}, '${user.email}', '${user.phoneNumber}')" class="btn btn-edit">Edit</button>
+                    <button onclick="editUser(${user.id}, '${user.email}', '${user.password}', '${user.firstName}', '${user.lastName}', '${user.dob}', '${user.phoneNumber}', '${user.userRole}')" class="btn btn-edit">Edit</button>
                     <button onclick="confirmDelete(${user.id})" class="btn btn-minus">Delete</button>
                   </td>
                 </tr>
@@ -145,10 +178,15 @@
                 editUserPopup.style.display = "none";
             }
 
-            function editUser(id, email, phoneNumber) {
+            function editUser(id, email, password, firstName, lastName, dob, phoneNumber, userRole) {
                 document.getElementById("editUserId").value = id;
                 document.querySelector("#editUserForm input[name='email']").value = email;
+                document.querySelector("#editUserForm input[name='password']").value = password;
+                document.querySelector("#editUserForm input[name='firstName']").value = firstName;
+                document.querySelector("#editUserForm input[name='lastName']").value = lastName;
+                document.querySelector("#editUserForm input[name='dob']").value = dob;
                 document.querySelector("#editUserForm input[name='phoneNumber']").value = phoneNumber;
+                document.querySelector("#editUserForm input[name='userRole']").value = userRole;
                 showEditUserPopup();
             }
 

@@ -4,10 +4,19 @@
 <html>
   <head>
     <jsp:include page="/templates/common.jsp" />
-    <title>JSP Page</title>
+    <title>IoTBay | Catalogue</title>
   </head>
   <body>
     <c:set var="isAdmin" value="true" />
+
+    <c:if test="${not empty sessionScope.errorMessage}">
+      <jsp:include page="/templates/toast.jsp">
+        <jsp:param name="variant" value="error" />
+        <jsp:param name="title" value="Error saving changes" />
+        <jsp:param name="message" value="${sessionScope.errorMessage}" />
+      </jsp:include>
+      <c:remove var="errorMessage" scope="session" />
+    </c:if>
 
     <jsp:include page="/templates/navbar.jsp" />
     <div class="max-w-5xl mx-auto px-6 w-full">

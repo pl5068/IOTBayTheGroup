@@ -198,3 +198,9 @@ h1, h2 {
 .roundedFixedBtn:hover {
     background-color: #3a6fb0;
 }
+
+.hyperlink {
+    color: #0000EE  !IMPORTANT;
+    text-decoration: underline  !IMPORTANT;       
+    font-family: Helvetica, sans-serif;
+}

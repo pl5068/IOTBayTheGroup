@@ -69,38 +69,31 @@
                 <form id="editUserForm" action="user_edit_admin" method="POST" class="auth-box">
                     <label class="auth-input">
                         <div class="text-field-label">Email:</div>
-                        <input name="email" type="email" class="text-field large" placeholder="Enter your email address" required />
+                        <input name="email" type="email" class="text-field large" placeholder="Enter a email address" required />
                     </label>
                     <label class="auth-input">
                         <div class="text-field-label">Password:</div>
-                        <input name="password" type="text" class="text-field large" placeholder="Enter your password" required />
+                        <input name="password" type="text" class="text-field large" placeholder="Enter a password" required />
                     </label>
                     <label class="auth-input">
                         <div class="text-field-label">First Name:</div>
-                        <input name="firstName" type="text" class="text-field large" placeholder="Enter your first name" required />
+                        <input name="firstName" type="text" class="text-field large" placeholder="Enter a first name" required />
                     </label>
                     <label class="auth-input">
                         <div class="text-field-label">Last Name:</div>
-                        <input name="lastName" type="text" class="text-field large" placeholder="Enter your last name" required />
+                        <input name="lastName" type="text" class="text-field large" placeholder="Enter a last name" required />
                     </label>
                     <label class="auth-input">
                         <div class="text-field-label">Date of Birth:</div>
-                        <input name="dob" type="Date" class="text-field large" placeholder="Enter your date of birth" required />
+                        <input name="dob" type="Date" class="text-field large" placeholder="Enter a date of birth" required />
                     </label>
                     <label class="auth-input">
                         <div class="text-field-label">Phone Number:</div>
-                        <input name="phoneNumber" type="text" class="text-field large" placeholder="Enter your phone number" required />
+                        <input name="phoneNumber" type="text" class="text-field large" placeholder="Enter a phone number" required />
                     </label>
                     <label class="auth-input">
                         <div class="text-field-label">User Role:</div>
-                        <div class="user-type">
-                            <input type="radio" id="userRadio" name="userRole" value="customer" checked>
-                            <label for="userRadio">Customer</label>
-                            <input type="radio" id="staffRadio" name="userRole" value="staff">
-                            <label for="staffRadio">Staff</label>
-                            <input type="radio" id="adminRadio" name="userRole" value="admin">
-                            <label for="userRadio">Admin</label>
-                        </div>
+                        <input name="userRole" type="text" class="text-field large" placeholder="Enter a user role" required />
                     </label>
                     <input type="hidden" name="id" id="editUserId" />
                     <button type="submit" style="width: 100%" class="button">Save Changes</button>

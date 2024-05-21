@@ -2,10 +2,13 @@ package com.iotbay.dao;
 
 import com.iotbay.iotbaydemo.Product;
 import com.iotbay.iotbaydemo.User;
+import com.iotbay.iotbaydemo.UserLogs;
 import java.sql.*;
+import java.sql.Timestamp;
+import java.util.Date;
+import misc.Utils;
 import java.util.ArrayList;
 import java.util.List;
-import misc.Utils;
 
 public class DBManager {
 
@@ -19,7 +22,7 @@ public class DBManager {
     public User findUser(String email, String password) throws SQLException {
         String fetch = "select * from `iotbay-database`.users where EMAIL = '" + email + "' and PASSWORD='" + password + "'";
         ResultSet rs = st.executeQuery(fetch);
-
+        
         while (rs.next()) {
             String userEmail = rs.getString(2);
             String userPassword = rs.getString(5);
@@ -37,22 +40,25 @@ public class DBManager {
         return null;
     }
 
+
     public void logInTimestamp(int uid) throws SQLException {
-        st.executeUpdate("insert into `iotbay-database`.access_log (userid, log_action, time_operation) values ('" + uid + "','logIn', '" + Utils.getLocalTimestamp() + "')");
+        st.executeUpdate("insert into `iotbay-database`.access_log (userid, log_action, time_operation) values ('" + uid + "','logIn', CURRENT_TIMESTAMP()) ;");
     }
 
+
     public void logOutTimestamp(int uid) throws SQLException {
-        st.executeUpdate("insert into `iotbay-database`.access_log (userid, log_action, time_operation) values ('" + uid + "','logOut', '" + Utils.getLocalTimestamp() + "')");
+        st.executeUpdate("insert into `iotbay-database`.access_log (userid, log_action, time_operation) values ('" + uid + "','logOut', NOW());");
     }
 
 //Add a user-data into the database   
-    public void addUser(String email, String firstName, String lastName, String password, String dob, String phoneNumber, String role) throws SQLException { 
-        st.executeUpdate("INSERT INTO `iotbay-database`.users (email, firstName, lastName, password, dob, phoneNumber, userRole) VALUES ('" + email + "', '" + firstName + "', '" + lastName + "', '" + password + "', '" + dob + "', '" + phoneNumber + "', '" + role + "')" );
+    public User addUser(String email, String firstName, String lastName, String password, String dob, String phoneNumber, String role) throws SQLException { 
+        st.executeUpdate("INSERT INTO `iotbay-database`.users (email, firstName, lastName, password, dob, phoneNumber, userRole) VALUES ('" + email + "', '" + firstName + "', '" + lastName + "', '" + password + "', '" + dob + "', '" + phoneNumber + "', '" + role + "')", Statement.RETURN_GENERATED_KEYS );
         ResultSet rs = st.executeQuery("select id from `iotbay-database`.users where EMAIL = '" + email + "'");
         rs.next();
         int uid = rs.getInt(1);
-        String q = "insert into `iotbay-database`.access_log (userid, log_action, time_operation) values ('" + uid + "','regUser', '" + Utils.getLocalTimestamp() + "')";
+        String q = "insert into `iotbay-database`.access_log (userid, log_action, time_operation) values ('" + uid + "','regUser', NOW()) ;";
         st.executeUpdate(q);
+        return findUser(email, password);
     }
 
 //update a user details in the database   
@@ -63,8 +69,47 @@ public class DBManager {
 
 //delete a user from the database   
     public void deleteUser(int id) throws SQLException {
-        //code for delete-operation   
+        st.executeUpdate("insert into `iotbay-database`.access_log (userid, log_action, time_operation) values ('" + id + "','deleteUser', CURRENT_TIMESTAMP()) ;");
+        st.executeUpdate("SET foreign_key_checks = 0;");
+        st.executeUpdate(" DELETE FROM `iotbay-database`.users WHERE id=" + id + "; ");
+        st.executeUpdate("SET foreign_key_checks = 1;");
+    }
 
+    public void editContacts(int id, String email, String ph) throws SQLException {
+        st.executeUpdate("update `iotbay-database`.users set email='" + email + "', phoneNumber='" + ph + "' where id = " + id + ";");
+    }
+    
+    public List<UserLogs> getLogs(int uid) throws SQLException {
+        ResultSet rs = st.executeQuery("select * from `iotbay-database`.access_log where userid = " +  uid + " order by time_operation desc;");
+        List<UserLogs> logs = new ArrayList<UserLogs>();
+        
+        while (rs.next()) {
+            int logId = rs.getInt(1);
+            int userId = rs.getInt(2);
+            String logAction = rs.getString(3);
+            Timestamp timeOperation = rs.getTimestamp(4);
+            logs.add(new UserLogs(logId, userId, logAction, timeOperation.toString()));
+        }
+        
+        return logs;
+    }
+
+    public List<User> getAllUsers() throws SQLException {
+        List<User> users = new ArrayList<>();
+        String query = "SELECT * FROM `iotbay-database`.users";
+        ResultSet rs = st.executeQuery(query);
+        while (rs.next()) {
+            int id = rs.getInt("id");
+            String email = rs.getString("email");
+            String firstName = rs.getString("firstName");
+            String lastName = rs.getString("lastName");
+            String password = rs.getString("password");
+            String dob = rs.getString("dob");
+            String phoneNumber = rs.getString("phoneNumber");
+            String userRole = rs.getString("userRole");
+            users.add(new User(id, email, firstName, lastName, password, dob, phoneNumber, userRole));
+        }
+        return users;
     }
 
     public void addDeliveryInfo(String first, String surname, String street, String city, String state, String postcode) throws SQLException {
@@ -134,4 +179,8 @@ public class DBManager {
 
         return products;
     }
+
+
+
+
 }

@@ -79,6 +79,21 @@ public class DBManager {
         st.executeUpdate("update `iotbay-database`.users set email='" + email + "', phoneNumber='" + ph + "' where id = " + id + ";");
     }
     
+    public void editContactsNew(int id, String email, String firstName, String lastName, String dob, String phoneNumber, String password, String userRole) throws SQLException {
+        String query = "UPDATE `iotbay-database`.users SET email=?, firstName=?, lastName=?, dob=?, phoneNumber=?, password=?, userRole=? WHERE id=?";
+        try (PreparedStatement ps = st.getConnection().prepareStatement(query)) {
+            ps.setString(1, email);
+            ps.setString(2, firstName);
+            ps.setString(3, lastName);
+            ps.setString(4, dob);
+            ps.setString(5, phoneNumber);
+            ps.setString(6, password);
+            ps.setString(7, userRole);
+            ps.setInt(8, id);
+            ps.executeUpdate();
+        }
+    }
+    
     public List<UserLogs> getLogs(int uid) throws SQLException {
         ResultSet rs = st.executeQuery("select * from `iotbay-database`.access_log where userid = " +  uid + " order by time_operation desc;");
         List<UserLogs> logs = new ArrayList<UserLogs>();

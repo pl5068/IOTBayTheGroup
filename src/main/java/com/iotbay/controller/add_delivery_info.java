@@ -22,6 +22,8 @@ public class add_delivery_info extends HttpServlet {
             DBConnector connector = new DBConnector();
             Connection conn = connector.openConnection();
             DBManager db = new DBManager(conn);
+            
+            HttpSession session = request.getSession();
 
             String first = request.getParameter("first");
             String surname = request.getParameter("surname");
@@ -31,7 +33,7 @@ public class add_delivery_info extends HttpServlet {
             String postcode = request.getParameter("postcode");
             
             if (first != null && surname != null && street != null && city != null && state != null && postcode != null) {
-                db.addDeliveryInfo(first, surname, street, city, state, postcode);
+                db.addDeliveryInfo(Integer.parseInt((String)session.getAttribute("orderNumber")), first, surname, street, city, state, postcode);
             }
             
             request.getRequestDispatcher("checkoutPage.jsp").forward(request, response);

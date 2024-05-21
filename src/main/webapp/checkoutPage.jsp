@@ -5,12 +5,14 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <jsp:include page="/templates/common.jsp" /><jsp:include page="/templates/common.jsp" />
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>IOTBay | Checkout</title>
         <link href='styles/common.css' rel="stylesheet" type="text/css">
         <link rel="icon" type="image/x-icon" href="iotbay.ico">
     </head>
     <body>
+        <jsp:include page="/templates/navbar.jsp" />
         <div class="checkout-container">
             <div class="delivery-info">
                 <div class="delivery-content">

@@ -79,6 +79,21 @@ public class DBManager {
         st.executeUpdate("update `iotbay-database`.users set email='" + email + "', phoneNumber='" + ph + "' where id = " + id + ";");
     }
     
+    public void editContactsNew(int id, String email, String firstName, String lastName, String dob, String phoneNumber, String password, String userRole) throws SQLException {
+        String query = "UPDATE `iotbay-database`.users SET email=?, firstName=?, lastName=?, dob=?, phoneNumber=?, password=?, userRole=? WHERE id=?";
+        try (PreparedStatement ps = st.getConnection().prepareStatement(query)) {
+            ps.setString(1, email);
+            ps.setString(2, firstName);
+            ps.setString(3, lastName);
+            ps.setString(4, dob);
+            ps.setString(5, phoneNumber);
+            ps.setString(6, password);
+            ps.setString(7, userRole);
+            ps.setInt(8, id);
+            ps.executeUpdate();
+        }
+    }
+    
     public List<UserLogs> getLogs(int uid) throws SQLException {
         ResultSet rs = st.executeQuery("select * from `iotbay-database`.access_log where userid = " +  uid + " order by time_operation desc;");
         List<UserLogs> logs = new ArrayList<UserLogs>();
@@ -112,8 +127,8 @@ public class DBManager {
         return users;
     }
 
-    public void addDeliveryInfo(String first, String surname, String street, String city, String state, String postcode) throws SQLException {
-        st.executeUpdate("INSERT INTO `iotbay-database`.order_history (first_name, last_name, street_address, city_address, state_address, postcode) values ('" + first + "', '" + surname + "', '" + street + "', '" + city + "', '" + state + "', '" + postcode + "')");
+    public void addDeliveryInfo(int oid, String first, String surname, String street, String city, String state, String postcode) throws SQLException {
+        st.executeUpdate("update `iotbay-database`.order_history set ordertime = NOW(), first_name = '" + first + "', last_name = '" + surname + "', street_address = '" + street + "', city_address = '" + city + "', state_address = '" + state + "', postcode =  "+ postcode + " where order_id =" + oid + ";");
     }
 
     public void retrieveItem(int productId, int quantity) throws SQLException {
@@ -125,7 +140,7 @@ public class DBManager {
     }
 
     public String createOrder(int uid) throws SQLException {
-
+           System.out.print(uid);
         String query = "INSERT INTO `iotbay-database`.order_history (customer_id) values (" + uid + ");";
         st.executeUpdate(query, Statement.RETURN_GENERATED_KEYS);
 
@@ -161,7 +176,7 @@ public class DBManager {
     }
 
     public List<Product> orderLines(int uid) throws SQLException {
-        String query = "SELECT *  FROM `iotbay-database`.products WHERE productID=(SELECT productID  FROM `iotbay-database`.order_lines  WHERE orderid = "+uid+");";
+        String query = "SELECT *  FROM `iotbay-database`.products WHERE productID in (SELECT productID  FROM `iotbay-database`.order_lines  WHERE orderid = "+uid+");";
 
         List<Product> products = new ArrayList<>();
 

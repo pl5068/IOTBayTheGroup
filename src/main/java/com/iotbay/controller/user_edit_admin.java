@@ -25,16 +25,26 @@ public class user_edit_admin extends HttpServlet {
 
             int id = Integer.parseInt(request.getParameter("id"));
             String email = request.getParameter("email");
+            String password = request.getParameter("password");
+            String firstName = request.getParameter("firstName");
+            String lastName = request.getParameter("lastName");
+            String dob = request.getParameter("dob");
+            String userRole = request.getParameter("userRole");
             String phoneNumber = request.getParameter("phoneNumber");
 
-            db.editContacts(id, email, phoneNumber);
+            db.editContactsNew(id, email, firstName, lastName, dob, phoneNumber, password, userRole);
 
             HttpSession session = request.getSession();
             User sessionUser = (User) session.getAttribute("user");
 
             if (sessionUser != null && sessionUser.getId() == id) {
                 sessionUser.setEmail(email);
+                sessionUser.setPassword(password);
+                sessionUser.setFirstName(firstName);
+                sessionUser.setLastName(lastName);
+                sessionUser.setDob(dob);
                 sessionUser.setPhoneNumber(phoneNumber);
+                sessionUser.setUserRole(userRole);
                 session.setAttribute("user", sessionUser);
             }
 

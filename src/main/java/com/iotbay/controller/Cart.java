@@ -36,7 +36,8 @@ public class Cart extends HttpServlet {
 
             DBManager db = new DBManager(conn);
             Products product = new Products(conn);
-            int orderId = db.getOrderId();
+            HttpSession s = request.getSession();
+            int orderId = Integer.parseInt((String)s.getAttribute("orderNumber"));
             
             List<Product> products;
             products = db.orderLines(orderId);
@@ -45,11 +46,13 @@ public class Cart extends HttpServlet {
             session.setAttribute("cartItems", products);
 
             // Forward to the cart.jsp or checkoutPage.jsp
-            request.getRequestDispatcher("checkoutPage.jsp").forward(request, response);
+            
             conn.close();
             
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(Cart.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            request.getRequestDispatcher("cart.jsp").forward(request, response);
         }
     }
 }

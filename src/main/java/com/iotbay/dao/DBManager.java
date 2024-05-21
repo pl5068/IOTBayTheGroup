@@ -112,8 +112,8 @@ public class DBManager {
         return users;
     }
 
-    public void addDeliveryInfo(String first, String surname, String street, String city, String state, String postcode) throws SQLException {
-        st.executeUpdate("INSERT INTO `iotbay-database`.order_history (first_name, last_name, street_address, city_address, state_address, postcode) values ('" + first + "', '" + surname + "', '" + street + "', '" + city + "', '" + state + "', '" + postcode + "')");
+    public void addDeliveryInfo(int oid, String first, String surname, String street, String city, String state, String postcode) throws SQLException {
+        st.executeUpdate("update `iotbay-database`.order_history set ordertime = NOW(), first_name = '" + first + "', last_name = '" + surname + "', street_address = '" + street + "', city_address = '" + city + "', state_address = '" + state + "', postcode =  "+ postcode + " where order_id =" + oid + ";");
     }
 
     public void retrieveItem(int productId, int quantity) throws SQLException {
@@ -125,7 +125,7 @@ public class DBManager {
     }
 
     public String createOrder(int uid) throws SQLException {
-
+           System.out.print(uid);
         String query = "INSERT INTO `iotbay-database`.order_history (customer_id) values (" + uid + ");";
         st.executeUpdate(query, Statement.RETURN_GENERATED_KEYS);
 
@@ -161,7 +161,7 @@ public class DBManager {
     }
 
     public List<Product> orderLines(int uid) throws SQLException {
-        String query = "SELECT *  FROM `iotbay-database`.products WHERE productID=(SELECT productID  FROM `iotbay-database`.order_lines  WHERE orderid = "+uid+");";
+        String query = "SELECT *  FROM `iotbay-database`.products WHERE productID in (SELECT productID  FROM `iotbay-database`.order_lines  WHERE orderid = "+uid+");";
 
         List<Product> products = new ArrayList<>();
 

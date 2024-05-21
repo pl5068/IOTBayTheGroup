@@ -2,6 +2,7 @@ package com.iotbay.controller;
 
 import com.iotbay.dao.DBConnector;
 import com.iotbay.dao.DBManager;
+import com.iotbay.iotbaydemo.Product;
 import com.iotbay.iotbaydemo.User;
 import java.io.IOException;
 import java.sql.Connection;
@@ -13,6 +14,8 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import java.util.ArrayList;
+import java.util.List;
 
 public class user_login extends HttpServlet {
 
@@ -38,10 +41,16 @@ public class user_login extends HttpServlet {
             if (user != null) {
                 session.setAttribute("user", user);
                 db.logInTimestamp(user.getId());
+                session.setAttribute("cartItems", new ArrayList<Product>());
+                session.setAttribute("cartItems", null);
                 response.sendRedirect("catalogue_view");
+                
                 conn.close();
                 return;
             }
+            
+            
+
             request.getRequestDispatcher("logInPage.jsp").forward(request,response);
             
             conn.close();
